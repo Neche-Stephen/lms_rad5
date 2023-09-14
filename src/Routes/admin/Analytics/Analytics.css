@@ -1,0 +1,54 @@
+.analytics_widget_one{
+    background: #9C9ADD;
+}
+
+.analytics_staff{
+    background: #FFD4FB;
+}
+
+.analytics_active{
+    background: #C2FBFB;
+}
+
+.analytics_graduate{
+    background: #FFF7AC;
+}
+
+/* .analytics_active:nth-child(1), .analytics_graduate:nth-child(1), .analytics_staff:nth-child(1) {
+    color: red;
+} */
+
+.analytics_active > :nth-child(1),
+.analytics_graduate > :nth-child(1),
+.analytics_staff > :nth-child(1) {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.analytics_active > :nth-child(2),
+.analytics_graduate > :nth-child(2),
+.analytics_staff > :nth-child(2) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.analytics_widget_two_col{
+    background: #9C9ADD;
+}
+
+.analytics_widget_two_col{
+    width: 49%;
+}
+
+.analytics_current{
+    background: #DDDDF3;
+}
+
+.bootcamp_btn{
+    border-radius: 100px;
+    background: #3936BC;
+    color: #F6F6F6;
+    font-size: 18px;
+    font-weight: 400;
+}

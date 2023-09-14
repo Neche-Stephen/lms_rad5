@@ -1,0 +1,26 @@
+.offcanvas-div{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #3936BC;
+}
+
+.admin-row{
+    background-color: #FF9A9A;
+    color: #2A2A2A;
+}
+
+.sidebar-row{
+    text-decoration: none; 
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    width: 100%;
+    border: unset;
+}
+
+.sidebar-row-children{
+    text-decoration: none; 
+    font-size: 17px;
+    font-weight: 600;
+    width: 100%;
+    border: unset;
+}
