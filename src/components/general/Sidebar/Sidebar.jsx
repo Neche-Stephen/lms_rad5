@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Offcanvas, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 import './sidebar.css'
@@ -9,16 +9,19 @@ import './sidebar.css'
 import RAD5_LOGO from './images/rad5.png';
 import { sidebarItems as defaultSidebarItems  } from '../../../utils/sidebarItems.utils';
 
-function Sidebar({showOffcanvas, handleClose}) {
+function Sidebar({showOffcanvas, handleClose, currentItem}) {
+  const navigate = useNavigate();
   const [sidebarItems, setSidebarItems] = useState(defaultSidebarItems);
 
   const handleSideItemClick = (e, sidebarItemClicked) =>{
         e.preventDefault();
+        console.log('1');
         const updatedSidebarItems = sidebarItems.map(sidebarItem =>{
           return {...sidebarItem, clicked:sidebarItemClicked === sidebarItem}
         })
-
+        console.log('2');
         if (sidebarItemClicked.hasChildren){ //resetting all the children to be !clicked
+          console.log('1a');
           const newUpdatedSidebarItems = updatedSidebarItems.map(sidebarItem =>{
             if (sidebarItem.hasChildren === true){
              return {...sidebarItem, children:sidebarItem.children.map(child => { return {...child, childClicked : false}} )}
@@ -27,12 +30,21 @@ function Sidebar({showOffcanvas, handleClose}) {
               return sidebarItem
             }
           })
+          console.log('1b')
           setSidebarItems(newUpdatedSidebarItems);
+          console.log('1c');
+          // navigate(`${sidebarItemClicked.link}`);
           return;
         }
-       else {
-        setSidebarItems(updatedSidebarItems);
-       }
+        else {
+          // setSidebarItems(updatedSidebarItems, () => {
+          //   console.log('here', sidebarItemClicked.link)
+          //   navigate(`${sidebarItemClicked.link}`);
+          // });
+
+          setSidebarItems(updatedSidebarItems);
+          navigate(`${sidebarItemClicked.link}`);
+        }
   }
 
   const handleSideBarItemChildClick = (childrenItemClicked, childItemClicked) => {
@@ -107,20 +119,20 @@ function Sidebar({showOffcanvas, handleClose}) {
                 }
                 else {
                   return (
-                    <button  
-                    onClick={(e) => {handleSideItemClick(e, sidebarItem)}}
-                    to='/'
+                    <Link 
+                    // onClick={(e) => {handleSideItemClick(e, sidebarItem)}}
+                    to={sidebarItem.link}
                     key={index} type="button" disabled = {sidebarItem.clicked} role="button"
                     className='row justify-content-center  m-0 mb-1 sidebar-row align-items-center' 
                     style={
                       {
-                        backgroundColor : sidebarItem.clicked ? '#AAAAAA':'#D0FFBF',
-                        color:sidebarItem.clicked ? '#FFF':'#3936BC',
+                        backgroundColor : sidebarItem.name === currentItem ? '#AAAAAA':'#D0FFBF',
+                        color:sidebarItem.name === currentItem? '#FFF':'#3936BC',
                     }}>
                       <Col className = 'p-0' xs = 'auto'>
                         {sidebarItem.name}
                     </Col>
-                    </button>
+                    </Link>
                   )
                 }
               })

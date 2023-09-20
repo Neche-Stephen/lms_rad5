@@ -8,10 +8,10 @@ export const COURSES_INITIAL_STATE = {
     //     course_name  : 'UI/UX Design',
     // }
     front_end : {
-        course_name  : 'Front-End Web Development',
+        courseName  : 'Front-End Web Development',
     },
     ui_ux : {
-        course_name  : 'Front-End Web Development',
+        courseName  : 'Front-End Web Development',
     },
 
 }

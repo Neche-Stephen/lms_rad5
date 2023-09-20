@@ -13,7 +13,7 @@ export default function AdminLogin() {
     const handleAdminSubmit = (e) => {
         e.preventDefault();
         signInAuthUserWithEmailAndPassword(adminEmail, adminPassword);
-        navigate('/admin/courses')
+        navigate('/admin/analytics')
     }
 
   return (

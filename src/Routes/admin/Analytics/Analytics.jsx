@@ -1,16 +1,27 @@
 import React, { useState, useEffect} from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Fragment } from 'react';
-
-import './Analytics.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
+import './Analytics.css';
+import Navbar from '../../../components/general/Navbar/Navbar';
+import Sidebar from '../../../components/general/Sidebar/Sidebar';
+
 export default function Analytics() {
-   
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const handleShow = () => setShowOffcanvas(true);
+  const handleClose = () => setShowOffcanvas(false);
   return (
-    <Fragment className='analytics'>
-        <Row className='analytics_widget_one p-3 mx-2 mt-4 mb-5 justify-content-between'>
+    <Fragment>
+      <Navbar />
+       <Container fluid>
+          <Row>
+          <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC', height:'100vh'}} xs = '2'>
+                <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Analytics'/>
+          </Col>
+            <Col xs = '10'>
+            <Row className='analytics_widget_one p-3 mx-2 mt-4 mb-5 justify-content-between'>
             <Col xs = '3' className='analytics_staff py-3'>
                 <Row className='justify-content-center mb-3'>8</Row>   
                 <Row className='justify-content-center'>NUMBER OF STAFF</Row>  
@@ -23,7 +34,7 @@ export default function Analytics() {
                 <Row className='justify-content-center mb-3'>496</Row>   
                 <Row className='justify-content-center'>GRADUATED STUDENTS</Row>  
             </Col>
-        </Row>
+            </Row>
         {/* <Row className='analytics_widget_two mx-2 justify-content-between'>
           <div className='analytics_widget_two_col px-4 pt-1 pb-4'>
               <Row>Current Bootcamp Info</Row>
@@ -85,6 +96,9 @@ export default function Analytics() {
               </Row>
           </div>
         </Row> */}
+            </Col>
+          </Row>
+       </Container>
     </Fragment>
   )
 }

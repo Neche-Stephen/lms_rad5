@@ -1,37 +1,17 @@
 export const sidebarItems = [
     {
       name : 'Analytics',
-      clicked : true,
-      disabled : false,
-      children : false,
-      link : '/admin/analytics'
-    },
-    {
-      name : 'Courses',
       link : '/admin/analytics',
       clicked : false,
       disabled : false,
-      hasChildren : true,
-      children : [
-        {
-          childName : 'Add Course',
-          childLink : '',
-          childClicked : false,
-          disabled : false
-        },
-        {
-          childName : 'View Courses',
-          childLink : '',
-          childClicked : false,
-          disabled : false
-        },
-        {
-          childName : 'Remove Course',
-          childLink : '',
-          childClicked : false,
-          disabled : false
-        }
-      ],
+      haschildren : false,
+    },
+    {
+      name : 'Courses',
+      link : '/admin/courses',
+      clicked : false,
+      disabled : false,
+      hasChildren : false,
     },
     {
       name : 'Newsletter',
