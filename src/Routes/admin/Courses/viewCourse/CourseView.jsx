@@ -81,7 +81,12 @@ export default function CourseView() {
       if (!querySnapshot.empty) {
         // Fetch documents from the "subcourse" subcollection
         fetchSubCourses(querySnapshot)
+        setLoading(false);
       } 
+      else{
+        console.log('no subcourse');
+        setLoading(false);
+      }
     });
   }
 
@@ -99,9 +104,11 @@ export default function CourseView() {
       if (!querySnapshot.empty) {
         // Fetch documents from the "topics" subcollection
         fetchCourseTopics(querySnapshot)
+        setLoading(false);
       } 
       else{
         console.log('empty ')
+        setLoading(false);
       }
     });
   }
@@ -109,13 +116,13 @@ export default function CourseView() {
   //Function to fetch and add subcourses to state
   const fetchSubCourses = (querySnapshot) =>{
     const subcourseDocuments = querySnapshot.docs.map((doc) => doc.data());
-    setLoading(false);
     setSubCourses(subcourseDocuments);
   }
 
    //Function to fetch and add course topics to state
   const fetchCourseTopics = (querySnapshot) =>{
     const topicDocuments = querySnapshot.docs.map((doc) => doc.data());
+    setLoading(false);
     setCourseTopics(topicDocuments)
   }
 

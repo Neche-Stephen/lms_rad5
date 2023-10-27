@@ -36,7 +36,7 @@ export default function SubCourseTopicsTable({ coursetopics }) {
             coursetopics.map((topic, index) =>{
               return (
                 <tr key = {index}>
-                  <td>1</td>
+                  <td>{index + 1}</td>
                   <td>{topic.topicName}</td>
                   <td>
                     <div className = 'row justify-content-around'>
