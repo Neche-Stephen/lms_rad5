@@ -1,0 +1,2 @@
+1. Delete image after Deleting course. (or subcourse or topic). Including materials associatied with the subcourse or topic
+2. sort fetching courses by date

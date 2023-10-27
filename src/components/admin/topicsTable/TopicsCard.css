@@ -1,0 +1,19 @@
+.course_card{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    height: 250px;
+}
+
+.course_card_img{
+    height: 100px;
+}
+
+.course_title{
+    font-size: 32px;
+    /* font-family: 'Montserrat', sans-serif; */
+
+}
+
+.course_card_add{
+    height: 250px;
+}

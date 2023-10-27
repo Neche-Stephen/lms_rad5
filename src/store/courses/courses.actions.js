@@ -1,9 +1,8 @@
 import COURSES_ACTION_TYPES from "./courses.types"
 
-export const addCourse = (payload) => {
-    console.log('yep!')
+export const addCourseName = (payload) => {
     return {
-        type : COURSES_ACTION_TYPES.ADD_COURSE,
+        type : COURSES_ACTION_TYPES.ADD_COURSE_NAME,
         payload : payload
     }
 }

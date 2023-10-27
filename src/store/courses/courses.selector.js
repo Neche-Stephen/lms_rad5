@@ -1,1 +1,1 @@
-// export const selectAllUser = (state) => state.user.currentUser;
+export const selectCourseName = (state) => state.courses.courseName;

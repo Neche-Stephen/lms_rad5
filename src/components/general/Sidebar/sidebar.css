@@ -1,7 +1,12 @@
 .offcanvas-div{
     font-family: 'Montserrat', sans-serif;
     background-color: #3936BC;
+   min-height: 100vh;
 }
+
+/* .sidebar{
+   min-height: 100vh;
+} */
 
 .admin-row{
     background-color: #FF9A9A;

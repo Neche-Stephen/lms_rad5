@@ -14,23 +14,23 @@ export default function Analytics() {
   const handleClose = () => setShowOffcanvas(false);
   return (
     <Fragment>
-      <Navbar />
+      <Navbar handleShow={handleShow}/>
        <Container fluid>
           <Row>
           <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC', height:'100vh'}} xs = '2'>
                 <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Analytics'/>
           </Col>
-            <Col xs = '10'>
+            <Col  lg = '10'>
             <Row className='analytics_widget_one p-3 mx-2 mt-4 mb-5 justify-content-between'>
-            <Col xs = '3' className='analytics_staff py-3'>
+            <Col xs = '5' lg = '3' className='analytics_staff py-3'>
                 <Row className='justify-content-center mb-3'>8</Row>   
                 <Row className='justify-content-center'>NUMBER OF STAFF</Row>  
             </Col>
-            <Col xs = '3' className='analytics_active py-3'>
+            <Col xs = '5' lg = '3' className='analytics_active py-3'>
                 <Row className='justify-content-center mb-3'>175</Row>   
                 <Row className='justify-content-center'>AVAILABLE / ACTIVE STUDENTS</Row>  
             </Col>
-            <Col xs = '3' className='analytics_graduate py-3'>
+            <Col xs = '5' lg = '3' className='analytics_graduate py-3 mt-4'>
                 <Row className='justify-content-center mb-3'>496</Row>   
                 <Row className='justify-content-center'>GRADUATED STUDENTS</Row>  
             </Col>

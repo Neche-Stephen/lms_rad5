@@ -1,5 +1,5 @@
 const COURSES_ACTION_TYPES = {
-    ADD_COURSE: 'courses/ADD_COURSE',
+  ADD_COURSE_NAME: 'courses/ADD_COURSE_NAME',
   };
   
 export default COURSES_ACTION_TYPES;

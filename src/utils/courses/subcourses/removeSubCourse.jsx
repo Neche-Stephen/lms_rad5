@@ -1,22 +1,26 @@
-// import { doc, deleteDoc } from 'firebase/firestore';
-// Initialize Firebase and Firestore as you normally would
-import {firestore} from '../firebase.utils';
 import { deleteDoc, doc, getDocs, query, collection, getFirestore, deleteField, arrayRemove, documentId } from 'firebase/firestore';
 import { ref, deleteObject, getDownloadURL} from 'firebase/storage';
-import{ storage} from '../firebase.utils.jsx';
+import { storage, firestore } from '../../firebase.utils';
 
 
-export const removeCourse = (courseName) =>{
-    if (!courseName) {
-        console.error('Invalid documentId:', documentId);
+export const removeSubCourse = (courseName, subCourseName) =>{
+    if (!courseName || !subCourseName) {
+        console.log(courseName, subCourseName)
+        console.error('Invalid documentId:', courseName, subCourseName);
         return;
       }
-    // Specify the collection name and the ID of the document you want to delete
-    const collectionName = 'courses';
-    // Create a reference to the document you want to delete
-    const documentReference = doc(firestore, collectionName,courseName);
-    // Use deleteDoc to remove the document
-    deleteDoc(documentReference)
+   //Create ref to courses collection
+   const coursesRef = collection(firestore, 'courses');
+
+   //Create ref to course document in the courses collection
+   const courseRef = doc(coursesRef, courseName);
+
+   //Create ref to subcourse collection in course document
+   const subcoursesRef = collection(courseRef, 'subcourse');
+
+   //Create ref to subcourse document we want to delete
+   const subcourseRef = doc(subcoursesRef, subCourseName);
+    deleteDoc(subcourseRef)
     .then(() => {
         console.log('Document successfully deleted');
     })
@@ -24,7 +28,7 @@ export const removeCourse = (courseName) =>{
         console.error('Error deleting document: ', error);
     });
 
-    const imagePath = `courses/${courseName}/courseImg`;
+    const imagePath = `courses/${courseName}/${subCourseName}/subcourseImg`;
     // Create a reference to the file
     const fileRef = ref(storage, imagePath);
    // Check if the file exists by attempting to get its download URL
@@ -48,12 +52,5 @@ export const removeCourse = (courseName) =>{
 
 
 
-
-
-
-
-
-
-// Recursive function to delete a document and its subcollections
 
 

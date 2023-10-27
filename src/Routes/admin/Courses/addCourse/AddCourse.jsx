@@ -9,9 +9,6 @@ import {firestore, storage} from '../../../../utils/firebase.utils';
 export default function AddCourse() {
     const [courseName, setCourseName] = useState('');
     const dispatch = useDispatch();
-
-    
-
     const createCourse = (e) =>{
         e.preventDefault();
         // Specify the collection and document ID

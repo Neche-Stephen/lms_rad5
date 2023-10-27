@@ -7,12 +7,14 @@ import './Navbar.css'
 export default function Navbar({handleShow}) {
   return (
     <Container fluid className='navba'>
-        <Row className=''>
-            <Col xs = '2' >
-                <img src={RAD5_LOGO} alt="RAD5_LOGO" className='img-fluid' />
-            </Col>
-            <i className="col-auto bi bi-menu-button-wide d-lg-none navba-ash" onClick={handleShow}></i>
-            <Col className='navba-ash'><h1>RAD5 ACADEMY</h1></Col>
+        <Row className='' style={{alignItems: 'stretch'}}>
+          <Col xs = '4' sm = '2' className = 'navba_logo'>
+              <img src={RAD5_LOGO} alt="RAD5_LOGO" className='img-fluid' />
+          </Col>
+          <Col xs = '3' className=' d-lg-none navba-icon position-relative' onClick={handleShow}>
+            <i className="bi bi-menu-button-wide position-absolute" style={{top:'25%'}} ></i>
+          </Col>
+            <Col xs = '5' sm ='7' lg = '10' className='navba-ash'><h1 className='mx-auto w-100 W-sm-75'>RAD5 ACADEMY</h1></Col>
             
         </Row>
     </Container>

@@ -65,7 +65,7 @@ function Sidebar({showOffcanvas, handleClose, currentItem}) {
   return (
     <>
     <Offcanvas className='offcanvas-div' show={showOffcanvas} onHide={handleClose} responsive="lg">
-      <Offcanvas.Body className='p-0'>
+      <Offcanvas.Body className='sidebar'>
         <Container fluid className='p-0'>
           <Row className='admin-row p-0 justify-content-center m-0 mb-4 '>
             <Col xs = '12'>

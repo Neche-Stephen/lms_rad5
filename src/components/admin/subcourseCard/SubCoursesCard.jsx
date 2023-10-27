@@ -1,19 +1,22 @@
 import React, {useEffect, useState, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {ref, getDownloadURL } from 'firebase/storage'; 
-import {firestore, storage} from '../../../utils/firebase.utils';
-
-import './CourseCard.css';
-import RAD5_LOGO from '../../../assets/images/rad5.png'
-//utils
-import { removeCourse } from '../../../utils/courses/removeCourse';
+import { useSelector} from 'react-redux';
 import { FaEdit } from 'react-icons/fa';
 import { BiShow } from 'react-icons/bi';
 import { AiFillDelete} from 'react-icons/ai';
 import { Tooltip } from 'react-tooltip';
 
+import { selectCourseName } from '../../../store/courses/courses.selector';
+import {firestore, storage} from '../../../utils/firebase.utils';
 
-export default function CoursesCard({courseData}) {
+import './SubCourseCard.css';
+import RAD5_LOGO from '../../../assets/images/rad5.png'
+// import { removeCourse } from '../../../utils/courses/removeCourse';
+import { removeSubCourse } from '../../../utils/courses/subcourses/removeSubCourse';
+
+export default function SubCoursesCard({subCourseData}) {
+  const courseName = useSelector(selectCourseName);
   const [courseImg, setCourseImg] = useState(null);
    // Function to fetch course image
   async function fetchImage(imagePath) {
@@ -33,7 +36,7 @@ export default function CoursesCard({courseData}) {
   }
 
   useEffect(()=>{
-     fetchImage(`courses/${courseData.courseName}/courseImg`)
+     fetchImage(`courses/${courseName}/${subCourseData.subCourseName}/subcourseImg`)
   },[])
 
   return (
@@ -45,14 +48,14 @@ export default function CoursesCard({courseData}) {
         </div>
         <div className='row justify-content-center'>
             <div className='col-auto'>
-                <p className='course_title'>{courseData.courseName} </p>
+                <p className='course_title'>{subCourseData.subCourseName} </p>
             </div>
         </div>
         <div className='row justify-content-center'>
             <div className='col-auto'>
                 <div className='row' style={{gap:'10px'}}>
                    <Link
-                        to ={`/admin/courses/view_course/${courseData.courseName}`}
+                        to ={`/admin/courses/view_subcourse/${subCourseData.subCourseName}`}
                         className='btn btn-primary col'
                         data-tooltip-id="course_card_tip" 
                         data-tooltip-content="View Course"
@@ -66,7 +69,7 @@ export default function CoursesCard({courseData}) {
                      data-tooltip-content="Edit Course">
                       <FaEdit /> 
                     </button>
-                    <button className='btn btn-danger col' onClick={()=> removeCourse(courseData.courseName)}
+                    <button className='btn btn-danger col' onClick={()=> removeSubCourse(courseName, subCourseData.subCourseName)}
                     data-tooltip-id="course_card_tip" 
                     data-tooltip-content="Delete Course"
                     >

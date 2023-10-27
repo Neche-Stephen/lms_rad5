@@ -1,6 +1,13 @@
 .navba{
     font-family: 'Montserrat', sans-serif;
+}
+.navba_logo{
     background-color: #3936BC;
+}
+
+.navba-icon{
+    height: auto;
+    background-color: #D4D4D4;
 }
 .navba-ash{
     background-color: #D4D4D4;
