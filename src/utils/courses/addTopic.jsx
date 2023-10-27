@@ -57,7 +57,7 @@ export const addTopicFiles = (newTopicDetailsFiles, courseName, topicName) => {
       });
   };
 
-export  const addTopic = (e, newTopicDetailsFiles, courseName, topicDetailsNonFiles)=> {
+export  const addTopic = async (e, newTopicDetailsFiles, courseName, topicDetailsNonFiles)=> {
   e.preventDefault();
   addTopicFiles(newTopicDetailsFiles, courseName, topicDetailsNonFiles.topicName);
   const selectedDocument = doc(coursesCollection, courseName);

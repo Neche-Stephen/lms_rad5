@@ -58,7 +58,7 @@ export const addTopicFiles = (newTopicDetailsFiles, courseName, subCourseName, t
       });
   };
 
-export  const addSubCourseTopic = (newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles)=> {
+export  const addSubCourseTopic = async (newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles)=> {
   addTopicFiles(newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles.topicName);
     //Getting a reference to the name of the course containing subcourse we are viewing
     const selectedCourse = doc(coursesCollection, courseName);

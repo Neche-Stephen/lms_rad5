@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Spinner } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 import { selectCourseName } from '../../../store/courses/courses.selector';
@@ -22,6 +22,7 @@ const defaultTopicDetailsFiles = {
 }
 
 export default function AddSubCourseTopicModal({handleCloseModalTopic}) {
+  const [loadingAddSubCourseTopic, setLoadingAddSubCourseTopic] = useState(false);
   const courseName = useSelector(selectCourseName)
   const subCourseName = useSelector(selectSubCourseName);
 
@@ -49,7 +50,12 @@ export default function AddSubCourseTopicModal({handleCloseModalTopic}) {
     const { name} = event.target;
     setTopicDetailsFiles({ ...topicDetailsFiles, [name]: event.target.files[0] });
   }
-
+  const addSubCourseTopicMethod = async( newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles)=> {
+    setLoadingAddSubCourseTopic(true);
+    await addSubCourseTopic(  newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles );
+    setLoadingAddSubCourseTopic(false);
+    alert('Topic Added');
+  }
 
   return (
     <>
@@ -110,12 +116,19 @@ export default function AddSubCourseTopicModal({handleCloseModalTopic}) {
             Close
           </Button>
           <Button variant="primary" 
-          onClick={() => addSubCourseTopic(
+          onClick={() => addSubCourseTopicMethod(
             newTopicDetailsFiles, courseName, subCourseName, topicDetailsNonFiles
             
             )}>
            Add Topic
           </Button>
+          {
+            loadingAddSubCourseTopic && <Button className='ms-3' style = {{all : 'unset'}}>
+              <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </Button>
+          }
         </Modal.Footer>
     </>
   )
