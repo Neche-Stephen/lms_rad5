@@ -24,6 +24,7 @@ export default function AdminLogin() {
                     <input type="email" id='email' className='form-control'
                      value={adminEmail}
                      onChange={(e) => setAdminEmail(e.target.value)}
+                     required
                     />
                 </Col>
 
@@ -32,6 +33,7 @@ export default function AdminLogin() {
                     <input type="password" id='password' className='form-control'
                       value={adminPassword}
                       onChange={(e) => setAdminPassword(e.target.value)}
+                      required
                     />
                 </Col>
             </Row>  
