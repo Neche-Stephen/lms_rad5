@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Analytics.css';
 import Navbar from '../../../components/general/Navbar/Navbar';
 import Sidebar from '../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../components/admin/adminSideBar/AdminSidebar';
 
 export default function Analytics() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -17,9 +18,7 @@ export default function Analytics() {
       <Navbar handleShow={handleShow}/>
        <Container fluid>
           <Row>
-          <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC', height:'100vh'}} xs = '2'>
-                <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Analytics'/>
-          </Col>
+            <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Analytics'/>
             <Col  lg = '10'>
             <Row className='analytics_widget_one p-3 mx-2 mt-4 mb-5 justify-content-between'>
             <Col xs = '5' lg = '3' className='analytics_staff py-3'>

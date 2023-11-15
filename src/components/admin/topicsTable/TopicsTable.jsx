@@ -22,33 +22,6 @@ export default function TopicsTable({ coursetopics }) {
   const courseName = useSelector(selectCourseName)
   return (
     <Fragment>
-        {/* <div className='row justify-content-center'>
-            <div className='col-auto'>
-                <div className='row' style={{gap:'10px'}}>
-                   <Link
-                        to ={`/admin/courses/view_course/${topicData.topicName}`}
-                        className='btn btn-primary col'
-                        data-tooltip-id="course_card_tip" 
-                        data-tooltip-content="View Course"
-                        
-                        >
-                          <Tooltip id="course_card_tip" />
-                            <BiShow /> 
-                    </Link>
-                    <button type='button' className='btn btn-secondary col'
-                     data-tooltip-id="course_card_tip" 
-                     data-tooltip-content="Edit Course">
-                      <FaEdit /> 
-                    </button>
-                    <button type='button' className='btn btn-danger col' onClick={()=> removeTopic(courseName, topicData.topicName)}
-                    data-tooltip-id="course_card_tip" 
-                    data-tooltip-content="Delete Course"
-                    >
-                      <AiFillDelete />
-                    </button>
-                </div>
-            </div>
-        </div> */}
 
     <Table responsive="sm">
       <thead>
@@ -69,7 +42,7 @@ export default function TopicsTable({ coursetopics }) {
                   <td>
                     <div className = 'row justify-content-around'>
                       <Link
-                        to ={`/admin/courses/view_course/${1}`}
+                        to ={`/admin/courses/view_topic/${topic.topicName}`}
                         className='btn btn-primary w-25'
                         data-tooltip-id="course_card_tip" 
                         data-tooltip-content="View Course"

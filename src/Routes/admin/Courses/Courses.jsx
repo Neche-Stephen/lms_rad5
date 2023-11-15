@@ -10,7 +10,7 @@ import { Tooltip } from 'react-tooltip';
 
 import { addCourse } from '../../../store/courses/courses.actions';
 import Navbar from '../../../components/general/Navbar/Navbar';
-import Sidebar from '../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../components/admin/adminSideBar/AdminSidebar';
 import CoursesCard from '../../../components/admin/courseCard/CoursesCard';
 import AddCourseModal from '../../../components/admin/addCourseModal/AddCourseModal';
 
@@ -54,9 +54,10 @@ export default function Courses() {
         <Navbar handleShow={handleShow} />
         <Container fluid>
           <Row>
-            <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC'}} xs = '2'>
-                  <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
-            </Col>
+            <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
+            {/* <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/> */}
+
+           
            {
             loadingCourses
             ?

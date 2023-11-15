@@ -27,6 +27,7 @@ export const addTopicFiles = (newTopicDetailsFiles, courseName, subCourseName, t
             // // You may want to aggregate or display progress for all files
             // // You can modify this part as needed
             // setProgresspercent(progress);
+            console.log('file uploaded')
           },
           (error) => {
             reject(error);
@@ -75,12 +76,11 @@ export  const addSubCourseTopic = async (newTopicDetailsFiles, courseName, subCo
   // Add a document to the subcourse subcollection with the specified ID
       setDoc(documentReference, topicDetailsNonFiles)
       .then(() => {
-        console.log('done')
+        console.log('done, subcoursetopic added');
       })
       .catch((error) => {
           console.error('Error writing document: ', error);
       });
-      console.log('done');
 }
 
 

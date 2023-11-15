@@ -9,12 +9,23 @@ export default function AdminLogin() {
     const navigate = useNavigate();
     const [adminEmail, setAdminEmail] = useState('');
     const [adminPassword, setAdminPassword] = useState('');
+    // navigate('/admin/analytics');
 
-    const handleAdminSubmit = (e) => {
+    const handleAdminSubmit = async (e) => {
         e.preventDefault();
-        signInAuthUserWithEmailAndPassword(adminEmail, adminPassword);
-        navigate('/admin/analytics')
-    }
+        try {
+          console.log('calling');
+          const userCredential = await signInAuthUserWithEmailAndPassword(adminEmail, adminPassword);
+          const user = userCredential.user;
+          // Handle success, e.g., navigate, update state, etc.
+          console.log('User signed in:', user);
+          navigate('/admin/analytics');
+        } catch (error) {
+          // Handle error, e.g., show an error message, update state, etc.
+          console.error('Sign-in error:', error.code);
+          // You can switch on error.code if needed
+        }
+      };
 
   return (
         <form className='col p-0' onSubmit={handleAdminSubmit}>

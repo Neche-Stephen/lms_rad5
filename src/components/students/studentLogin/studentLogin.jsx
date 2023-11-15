@@ -1,18 +1,30 @@
 import React, {useState} from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 
 import { signInAuthUserWithEmailAndPassword } from '../../../utils/firebase.utils';
 
 
 export default function StudentLogin() {
+    const navigate = useNavigate();
     const [studentEmail, setStudentEmail] = useState('');
     const [studentPassword, setStudentPassword] = useState('');
 
-    const handleStudentSubmit = (e) => {
+    const handleStudentSubmit = async (e) => {
         e.preventDefault();
-        console.log('calling')
-        signInAuthUserWithEmailAndPassword(studentEmail, studentPassword);
-    }
+        try {
+          console.log('calling');
+          const userCredential = await signInAuthUserWithEmailAndPassword(studentEmail, studentPassword);
+          const user = userCredential.user;
+          // Handle success, e.g., navigate, update state, etc.
+          console.log('User signed in:', user);
+          navigate('/student/Dashboard');
+        } catch (error) {
+          // Handle error, e.g., show an error message, update state, etc.
+          console.error('Sign-in error:', error.code);
+          // You can switch on error.code if needed
+        }
+      };
 
   return (
         <form className='col p-0' onSubmit={handleStudentSubmit}>
@@ -21,7 +33,7 @@ export default function StudentLogin() {
                     <label htmlFor="email">Email*</label>
                     <input type="email" id='email' className='form-control'
                      value={studentEmail}
-                     onChange={(e) => setStudentEmail(e.target.value)}
+                     onChange={(e) => setStudentEmail(e.target.value)} required
                     />
                 </Col>
 
@@ -29,7 +41,7 @@ export default function StudentLogin() {
                     <label htmlFor="password">Password*</label>
                     <input type="password" id='password' className='form-control'
                       value={studentPassword}
-                      onChange={(e) => setStudentPassword(e.target.value)}
+                      onChange={(e) => setStudentPassword(e.target.value)} required
                     />
                 </Col>
             </Row>  

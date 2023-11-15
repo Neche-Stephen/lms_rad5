@@ -9,16 +9,19 @@ import { Tooltip } from 'react-tooltip';
 import { Table} from 'react-bootstrap';
 
 import { selectCourseName } from '../../../store/courses/courses.selector';
+import { selectSubCourseName } from '../../../store/subcourses/subcourses.selector';
 import {firestore, storage} from '../../../utils/firebase.utils';
-
+ 
 import './subCourseTopicsTable.css';
 import RAD5_LOGO from '../../../assets/images/rad5.png'
 // import { removeCourse } from '../../../utils/courses/removeCourse';
 // import { removeSubCourse } from '../../../utils/courses/subcourses/removeSubCourse';
 import { removeTopic } from '../../../utils/courses/topics/removeTopic';
+import { removeSubCourseTopic } from '../../../utils/courses/topics/removeSubCourseTopic';
 
 export default function SubCourseTopicsTable({ coursetopics }) {
-  const courseName = useSelector(selectCourseName)
+  const courseName = useSelector(selectCourseName);
+  const subcourseName = useSelector(selectSubCourseName);
   return (
     <Fragment>
 
@@ -54,7 +57,7 @@ export default function SubCourseTopicsTable({ coursetopics }) {
                       data-tooltip-content="Edit Course">
                         <FaEdit /> 
                       </button>
-                      <button type='button' className='btn btn-danger w-25' onClick={()=> removeTopic(courseName, topic.topicName)}
+                      <button type='button' className='btn btn-danger w-25' onClick={()=> removeSubCourseTopic(courseName, subcourseName, topic.topicName)}
                       data-tooltip-id="course_card_tip" 
                       data-tooltip-content="Delete Course"
                       >

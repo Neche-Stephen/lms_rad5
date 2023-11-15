@@ -7,21 +7,19 @@ import './sidebar.css'
 
 
 import RAD5_LOGO from './images/rad5.png';
-import { sidebarItems as defaultSidebarItems  } from '../../../utils/sidebarItems.utils';
+// import { sidebarItems as defaultSidebarItems  } from '../../../utils/sidebarItems.utils';
 
-function Sidebar({showOffcanvas, handleClose, currentItem}) {
+function Sidebar({SidebarItems, showOffcanvas, handleClose, currentItem}) {
+  console.log(SidebarItems, showOffcanvas, handleClose, currentItem)
   const navigate = useNavigate();
-  const [sidebarItems, setSidebarItems] = useState(defaultSidebarItems);
+  const [sidebarItems, setSidebarItems] = useState(SidebarItems);
 
   const handleSideItemClick = (e, sidebarItemClicked) =>{
         e.preventDefault();
-        console.log('1');
         const updatedSidebarItems = sidebarItems.map(sidebarItem =>{
           return {...sidebarItem, clicked:sidebarItemClicked === sidebarItem}
         })
-        console.log('2');
         if (sidebarItemClicked.hasChildren){ //resetting all the children to be !clicked
-          console.log('1a');
           const newUpdatedSidebarItems = updatedSidebarItems.map(sidebarItem =>{
             if (sidebarItem.hasChildren === true){
              return {...sidebarItem, children:sidebarItem.children.map(child => { return {...child, childClicked : false}} )}
@@ -30,9 +28,7 @@ function Sidebar({showOffcanvas, handleClose, currentItem}) {
               return sidebarItem
             }
           })
-          console.log('1b')
           setSidebarItems(newUpdatedSidebarItems);
-          console.log('1c');
           // navigate(`${sidebarItemClicked.link}`);
           return;
         }
@@ -64,7 +60,8 @@ function Sidebar({showOffcanvas, handleClose, currentItem}) {
   }
   return (
     <>
-    <Offcanvas className='offcanvas-div' show={showOffcanvas} onHide={handleClose} responsive="lg">
+      <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC'}} xs = '2'>
+      <Offcanvas className='offcanvas-div' show={showOffcanvas} onHide={handleClose} responsive="lg">
       <Offcanvas.Body className='sidebar'>
         <Container fluid className='p-0'>
           <Row className='admin-row p-0 justify-content-center m-0 mb-4 '>
@@ -141,6 +138,7 @@ function Sidebar({showOffcanvas, handleClose, currentItem}) {
         </Container>
       </Offcanvas.Body>
     </Offcanvas>
+      </Col>
     </>
   );
 }

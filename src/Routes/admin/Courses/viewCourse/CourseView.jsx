@@ -142,9 +142,7 @@ export default function CourseView() {
       <Navbar handleShow={handleShow}/>
       <Container fluid>
         <Row>
-          <Col className='d-none d-lg-block p-0' style = {{backgroundColor:'#3936BC'}} xs = '2'>
-                      <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
-          </Col>
+         <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
           {
             loading ?
             <Col>

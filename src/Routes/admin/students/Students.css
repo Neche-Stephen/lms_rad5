@@ -1,0 +1,11 @@
+
+
+.student_course_row{
+    gap: 20px;
+}
+
+.student_courses{
+    width: 20%;
+    /* background: url('../../../assets/images/rad5.png'), lightgray 50% / cover no-repeat, #9C9ADD; */
+}
+

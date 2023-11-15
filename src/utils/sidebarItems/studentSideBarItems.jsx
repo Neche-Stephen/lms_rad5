@@ -1,23 +1,17 @@
-export const sidebarItems = [
+export const studentSidebarItems = [
     {
-      name : 'Analytics',
-      link : '/admin/analytics',
+      name : 'Dashboard',
+      link : '/student/dashboard/',
       clicked : false,
       disabled : false,
       haschildren : false,
     },
     {
-      name : 'Courses',
-      link : '/admin/courses',
+      name : 'My Courses',
+      link : '/student/courses/',
       clicked : false,
       disabled : false,
       hasChildren : false,
-    },
-    {
-      name : 'Students',
-      link : '/admin/students',
-      clicked : false,
-      disabled : false
     },
     {
       name : 'Newsletter',

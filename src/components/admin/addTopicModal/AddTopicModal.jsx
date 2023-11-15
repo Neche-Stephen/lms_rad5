@@ -81,7 +81,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             {/* topic material */}
             <p>Topic Material (optional)</p>
             <label htmlFor="">Upload File</label>
-            <input type="file" name = 'topicMaterialFile' 
+            <input type="file" accept=".pdf" name = 'topicMaterialFile' 
             onChange={handleChangeTopicFile}
             />
             OR
@@ -92,7 +92,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             {/* topic classwork */}
             <p>Topic Classwork (optional)</p>
             <label htmlFor="">Upload File</label>
-            <input type="file" name = 'topicClassworkFile' 
+            <input type="file" accept=".pdf" name = 'topicClassworkFile' 
             onChange={handleChangeTopicFile}
             />
             OR
@@ -103,7 +103,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             {/* topic homework */}
             <p>Topic Homework (optional)</p>
             <label htmlFor="">Upload File</label>
-            <input type="file" name = 'topicHomeworkFile' 
+            <input type="file" accept=".pdf" name = 'topicHomeworkFile' 
             onChange={handleChangeTopicFile}
             />
             OR

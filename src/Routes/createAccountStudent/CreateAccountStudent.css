@@ -1,0 +1,70 @@
+
+
+.create_account_first_row{
+    /* height: 50.849px; */
+    background: #3936BC;
+}
+
+.create_account_img{
+    /* width: 100%; */
+    /* width: 516.523px; */
+    /* height: 708.547px; */
+}
+
+hr{
+    width: 129.062px;
+    height: 1px;
+    background: #2A2A2A;
+    position: relative;
+    top: 3px;
+}
+
+.create_account_create_account_text_div{
+    margin-right: 150px;
+}
+
+.create_account_create_account_text{
+    color: #000;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.create_account_form{
+    border-radius: 20px;
+    background: #9C9ADD;
+    padding: 30px 80px;
+}
+
+.create_account_form_label{
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+::placeholder {
+    color: #3936BC !important;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .create_account_form_btn{
+    border-radius: 100px;
+    background: #3936BC;
+    padding: 10px;
+    width: 300px;
+    color: var(--primary-white-1, #F6F6F6);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }

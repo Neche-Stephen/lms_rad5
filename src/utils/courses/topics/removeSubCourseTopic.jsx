@@ -5,8 +5,12 @@ import {storage, firestore} from '../../firebase.utils';
 
 const coursesCollection = collection(firestore, 'courses');
 
-const removeFiles = async (courseName, TopicName)=>{
-  const filesToDeleteArray = [ `courses/${courseName}/${TopicName}/topicClasswork`, `courses/${courseName}/${TopicName}/topicHomework`, `courses/${courseName}/${TopicName}/topicMaterial`] 
+const removeFiles = async (courseName, subcourseName, TopicName)=>{
+  const filesToDeleteArray = [ 
+    `courses/${courseName}/${subcourseName}/${TopicName}/topicClasswork`, 
+    `courses/${courseName}/${subcourseName}/${TopicName}/topicHomework`, 
+    `courses/${courseName}/${subcourseName}/${TopicName}/topicMaterial`
+] 
   try {
     for (const filePath of filesToDeleteArray) {
       const storageRef = ref(storage, filePath);
@@ -25,14 +29,10 @@ const removeFiles = async (courseName, TopicName)=>{
     console.error("Error deleting files:", error);
   }
 }
-export  const removeTopic = async (courseName, TopicName)=> {
-    await removeFiles(courseName, TopicName);
-//   addTopicFiles(newTopicDetailsFiles, courseName, topicDetailsNonFiles.topicName);
-  const selectedDocument = doc(coursesCollection, courseName);
-  // Reference to the subcollection (creating it implicitly)
-  const Subcollection = collection(selectedDocument, 'topics');
-  // Create a reference to the document with the specified ID
-  const documentReference = doc(Subcollection, TopicName);
+export  const removeSubCourseTopic = async (courseName, subcourseName, topicName)=> {
+    await removeFiles(courseName, subcourseName, topicName);
+    // Reference to the document you want to remove
+    const documentReference = doc(firestore, `courses/${courseName}/subcourse/${subcourseName}/topics/${topicName}`)
     deleteDoc(documentReference)
     .then(() => {
         console.log('Document successfully deleted');

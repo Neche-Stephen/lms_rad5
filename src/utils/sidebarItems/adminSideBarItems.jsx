@@ -1,4 +1,4 @@
-export const sidebarItems = [
+export const adminSidebarItems = [
     {
       name : 'Analytics',
       link : '/admin/analytics',
@@ -20,7 +20,8 @@ export const sidebarItems = [
       disabled : false
     },
     {
-      name : 'Newsletter',
+      name : 'Cohorts',
+      link : '/admin/cohorts',
       clicked : false,
       disabled : false
     },
