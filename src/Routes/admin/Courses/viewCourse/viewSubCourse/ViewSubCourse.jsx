@@ -23,7 +23,7 @@ import AddSubCourseTopicModal from '../../../../../components/admin/addSubCourse
 import SubCourseTopicsTable from '../../../../../components/admin/subCourseTopicsTable/subCourseTopicsTable';
 
 import Navbar from '../../../../../components/general/Navbar/Navbar';
-import Sidebar from '../../../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../../../components/admin/adminSideBar/AdminSidebar';
 
 const defaulTopicDetailsNonFiles = {
   topicName : '',
@@ -106,7 +106,7 @@ export default function SubCourseView() {
     <Navbar handleShow={handleShow}/>
     <Container fluid>
         <Row>
-            <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
+            <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
 
             <Col>
             <Row>

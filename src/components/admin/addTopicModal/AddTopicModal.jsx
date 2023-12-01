@@ -2,8 +2,11 @@ import React, {useState} from 'react';
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
+import stlyes from './AddTopicModal.module.css'
+
 import { selectCourseName } from '../../../store/courses/courses.selector';
 import { addTopic } from '../../../utils/courses/addTopic';
+
 
 const defaulTopicDetailsNonFiles = {
   topicName : '',
@@ -57,7 +60,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
   }
  
   return (
-     <form onSubmit={(e) => addTopicMethod(
+     <form className={'form'} onSubmit={(e) => addTopicMethod(
       e, newTopicDetailsFiles, courseName, topicDetailsNonFiles 
       )}>
         <Modal.Header closeButton>
@@ -71,6 +74,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             onChange={handleChangeTopicNonFile}
             name = 'topicName'
             />
+
             {/* topic intro */}
             <label htmlFor="">Brief Intro to Topic (Optional)</label>
             <input type="text" className='form-control'
@@ -82,7 +86,7 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             <p>Topic Material (optional)</p>
             <label htmlFor="">Upload File</label>
             <input type="file" accept=".pdf" name = 'topicMaterialFile' 
-            onChange={handleChangeTopicFile}
+            onChange={handleChangeTopicFile} className='form-control'
             />
             OR
             <label htmlFor="">Paste Link to Topic Material</label>
@@ -93,24 +97,25 @@ export default function AddTopicModal({handleCloseModalTopic}) {
             <p>Topic Classwork (optional)</p>
             <label htmlFor="">Upload File</label>
             <input type="file" accept=".pdf" name = 'topicClassworkFile' 
-            onChange={handleChangeTopicFile}
+            onChange={handleChangeTopicFile} className='form-control'
             />
             OR
             <label htmlFor="">Paste Link to Topic Classwork</label>
             <input type="text" className='form-control' name = 'topicClassworkLink'
             value={topicClassworkLink}
             onChange={handleChangeTopicNonFile} />
+
             {/* topic homework */}
             <p>Topic Homework (optional)</p>
             <label htmlFor="">Upload File</label>
             <input type="file" accept=".pdf" name = 'topicHomeworkFile' 
-            onChange={handleChangeTopicFile}
+            onChange={handleChangeTopicFile} className='form-control'
             />
             OR
             <label htmlFor="">Paste Link to Topic Homework</label>
             <input type="text" className='form-control' name = 'topicHomeworkLink' 
-            value={topicHomeworkLink}
-            onChange={handleChangeTopicNonFile}/>
+            value={topicHomeworkLink} 
+            onChange={handleChangeTopicNonFile}/> 
         </Modal.Body> 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModalTopic}>

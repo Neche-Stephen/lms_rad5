@@ -9,12 +9,16 @@ import { Document, Page } from 'react-pdf';
 
 import {firestore, storage} from '../../../../utils/firebase.utils';
 import Navbar from '../../../../components/general/Navbar/Navbar';
-import Sidebar from '../../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../../components/admin/adminSideBar/AdminSidebar';
 
 import { selectCourseName } from '../../../../store/courses/courses.selector';
 import { selectSubCourseName } from '../../../../store/subcourses/subcourses.selector';
 
 export default function ViewSubCourseTopic() {
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
+    const handleShow = () => setShowOffcanvas(true);
+    const handleClose = () => setShowOffcanvas(false);
+  
     const courseName = useSelector(selectCourseName);
     const subcourseName = useSelector(selectSubCourseName);
     const {topicName} = useParams();
@@ -22,13 +26,6 @@ export default function ViewSubCourseTopic() {
     //State to store topic data
     const [topicData, setTopicData] = useState({});
     const [topicFiles, setTopicFiles] = useState([]);
-
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
-
-    const onDocumentLoadSuccess = ({ numPages }) => {
-        setNumPages(numPages);
-      };
 
     useEffect(()=>{
     // Reference to the document you want to retrieve
@@ -88,81 +85,100 @@ export default function ViewSubCourseTopic() {
     }, [])
   return (
     <>
-        <Navbar />
+        <Navbar handleShow={handleShow}/>
         <Container fluid>
             <Row>
-                <Sidebar />
+                <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
+               
                 <Col>
                     <Row>
                         <Col>
                             <h1>{topicData.topicName}</h1>
                         </Col>
                     </Row>
-                    <Row>
+
+                    <Row className='mt-4'>
                         <Col>
                             <h3>Introduction</h3>
-                            <p>{topicData.topicIntro}</p>
+                            <ul>
+                                <li>{topicData.topicIntro}</li>
+                            </ul>
                         </Col>
                     </Row>
-                    <Row className='justify-content-center'>
-                       {
-                            topicData.topicMaterialLink 
-                            ? 
-                            <a href={topicData.topicMaterialLink} target = '_blank'>Topic Material</a>
-                            :
-                            topicFiles.map((topicFile, index) => {
-                                    if (topicFile.path.includes('topicMaterial')) {
-                                   return(
-                                     <div>
-                                        <a href={topicFile.url} target = '_blank'>Topic Material</a>
-                                    </div>
-                                   )
+                    {/* Topic Material */}
+                    <Row className='mt-4'>
+                        <Col>
+                            <h3>Material</h3>
+                            <ul>
+                                <li>{
+                                    topicData.topicMaterialLink 
+                                    ? 
+                                    <a href={topicData.topicMaterialLink} target = '_blank'>Topic Material</a>
+                                    :
+                                    topicFiles.map((topicFile, index) => {
+                                            if (topicFile.path.includes('topicMaterial')) {
+                                        return(
+                                            <div>
+                                                <a href={topicFile.url} target = '_blank'>Topic Material</a>
+                                            </div>
+                                        )
+                                            }
+                                            return null;
+                                        })
                                     }
-                                    return null;
-                                })
-                        }
-                    </Row>
-                    <Row className='justify-content-center'>
-                        <Col xs = ''>
-                            {
-                            topicData.topicClassworkLink 
-                            ? 
-                            <a href={topicData.topicClassworkLink} target = '_blank'>Topic Classwork</a>
-                            :
-                            topicFiles.map((topicFile, index) => {
-                                    if (topicFile.path.includes('topicClasswork')) {
-                                   return(
-                                     <div>
-                                        <a href={topicFile.url} target = '_blank'>Topic Classwork</a>
-                                    </div>
-                                   )
-                                    }
-                                    return null;
-                                })
-                        }
+                                </li>
+                            </ul>
                         </Col>
-                        
                     </Row>
+                     {/* Topic Assessment */}
                     <Row>
-                      <Col xs = ''>
-                        {
-                            topicData.topicHomeworkLink 
-                            ? 
-                            <a href={topicData.topicHomeworkLink} target = '_blank'>Topic Homework</a>
-                            :
-                            topicFiles.map((topicFile, index) => {
-                                    if (topicFile.path.includes('topicHomework')) {
-                                   return(
-                                     <div>
-                                        <a href={topicFile.url} target = '_blank'>Topic Homework</a>
-                                    </div>
-                                   )
+                        <Col>
+                            <h3>Assessment</h3>
+                            <ul>
+                                <li>
+                                        {
+                                        topicData.topicClassworkLink 
+                                        ? 
+                                        <a href={topicData.topicClassworkLink} target = '_blank'>Classwork</a>
+                                        :
+                                        topicFiles.map((topicFile, index) => {
+                                                if (topicFile.path.includes('topicClasswork')) {
+                                            return(
+                                                <div>
+                                                    <a href={topicFile.url} target = '_blank'>Topic Classwork</a>
+                                                </div>
+                                            )
+                                                }
+                                                return null;
+                                            })
+                                        }
+                                </li>
+
+                                <li>
+                                    {
+                                    topicData.topicHomeworkLink 
+                                    ? 
+                                    <a href={topicData.topicHomeworkLink} target = '_blank'>Homework</a>
+                                    :
+                                    topicFiles.map((topicFile, index) => {
+                                            if (topicFile.path.includes('topicHomework')) {
+                                        return(
+                                            <div>
+                                                <a href={topicFile.url} target = '_blank'>Topic Homework</a>
+                                            </div>
+                                        )
+                                            }
+                                            return null;
+                                    })
                                     }
-                                    return null;
-                                })
-                        }
+                                </li>
+                            </ul>
                         </Col>
+
                     </Row>
+
+
+                    
                 </Col>
             </Row>
         </Container>
