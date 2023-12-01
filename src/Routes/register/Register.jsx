@@ -16,6 +16,7 @@ import RegisterForm from './RegisterForm';
 function Register() {
     // State to store user id, if user is authenicated
     const [user, setUser] = useState(null);
+    const [uid, setUid] = useState('')
 
     const [coursesArray, setCoursesArray] = useState([]);
 
@@ -58,6 +59,7 @@ function Register() {
             // User is signed in
             console.log('User is signed');
             setUser(currentUser);
+            setUid(currentUser.uid);
             fetchUserProfileInfo(currentUser.uid);
             fetchCohortCourses();
           } else {
@@ -92,7 +94,7 @@ function Register() {
             <RegisterForm 
                 coursesArray = {coursesArray}
                 userProfile =   {userProfile}
-                uid = {user.id}
+                uid = {uid}
             />    
         </Row>
     </Container>

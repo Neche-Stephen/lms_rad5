@@ -30,7 +30,6 @@ export default function RegisterForm ({coursesArray, userProfile, uid}) {
 
     const handleSubmitStudentDetails = (e)=>{
         e.preventDefault();
-        console.log(uid);
         registerStudent(studentDetails, uid);
     }
   return (
