@@ -1,0 +1,1 @@
+export const selectCourseName = (state) => state.studentCourses.courseName;

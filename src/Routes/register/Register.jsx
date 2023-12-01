@@ -1,43 +1,77 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { collection, getDocs, getDoc, deleteDoc, doc, setDoc} from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 import './Register.css'
+
+import { firestore, auth } from '../../utils/firebase.utils';
 import LOGO from '../../assets/images/rad5.png';
 import REGISTER from '../../assets/images/register.png';
 
-
-
-import { addStudentToCohort } from '../../utils/register/register';
-
-const defaultStudentDetails = {
-    'first_name' : '',
-    'last_name' : '',
-    'email':'',
-    'course':'',
-    'course_code':'',
-    'cohort':'',
-}
+import RegisterForm from './RegisterForm';
 
 function Register() {
-    const [studentDetails, setStudentDetails] = useState(defaultStudentDetails);
-    const {first_name, last_name, email} = studentDetails;
+    // State to store user id, if user is authenicated
+    const [user, setUser] = useState(null);
 
-    const handleChangeStudentDetails = (e)=>{
-        const { name, value } = e.target;
-        console.log(name, value);
+    const [coursesArray, setCoursesArray] = useState([]);
 
-        setStudentDetails({ ...studentDetails, [name]: value });
+    const [userProfile, setUserProfile] = useState({}); // State to store user profile like first name and last name
+
+    const fetchCohortCourses = async () => {
+        const cohortCollection = collection(firestore, 'cohorts');
+        const cohortCoursesSnapshot = await getDocs(cohortCollection);
+       // Extracting data from QuerySnapshot and updating coursesArray
+        const newDataArray = cohortCoursesSnapshot.docs.map((doc) => doc.data());
+
+        // Updating coursesArray with the accumulated data
+        setCoursesArray([...coursesArray, ...newDataArray]);
     }
 
-    const handleSubmitStudentDetails = (e)=>{
-        e.preventDefault();
-        addStudentToCohort(studentDetails);
+    const fetchUserProfileInfo = async (uid) => {
+       try{
+        const studentsDocRef = doc(firestore, "students", uid);
+        const docSnapshot = await getDoc(studentsDocRef);
+        if (docSnapshot.exists()) {
+            // Document exists, retrieve its data
+            const documentData = docSnapshot.data();
+            console.log('Document data:', documentData);
+            setUserProfile(documentData);
+            // return documentData;
+          } else {
+            console.log('Document not found.');
+            return null;
+          }
+
+       }catch (error) {
+        console.error('Error fetching document:', error);
+        return null;
+      }
     }
 
-   
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          if (currentUser) {
+            // User is signed in
+            console.log('User is signed');
+            setUser(currentUser);
+            fetchUserProfileInfo(currentUser.uid);
+            fetchCohortCourses();
+          } else {
+            // No user is signed in, redirect to login
+            console.log('No user is signed');
+          }
+        });
+    
+        return () => {
+          unsubscribe(); // Cleanup the listener when component unmounts
+        };
+      }, [auth]);
 
+ 
   return (
     <Container fluid>
         {/* header */}
@@ -54,62 +88,15 @@ function Register() {
             </Col>
         </Row>
         <Row className='mt-2 mb-5 justify-content-center align-items-stretch' style={{gap:"30px"}}>
-            {/* <Col xs = '4'> */}
-                <img className='col-4 register_img' src={REGISTER} alt="" />
-            {/* </Col> */}
-            {/* <Col xs = '5'> */}
-            <Form className='register_form col-5' onSubmit={(e)=>handleSubmitStudentDetails(e)}>
-                <Form.Group className="mb-3" controlId="first_name">
-                    <Form.Label className='register_form_label'>First Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter First Name" name = 'first_name' value = {first_name} onChange = {(e)=>{
-                        handleChangeStudentDetails(e)
-                    }}/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="last_name">
-                    <Form.Label className='register_form_label'>Last Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Last Name"  name = 'last_name' value = {last_name} onChange = {(e)=>{
-                        handleChangeStudentDetails(e)
-                    }}/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label className='register_form_label'>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email"  name = 'email' value = {email} onChange = {(e)=>{
-                        handleChangeStudentDetails(e)
-                    }}/>
-                </Form.Group>
-
-                <Form.Select name = 'course' className = 'mb-3 register_form_label' onChange={(e)=>{handleChangeStudentDetails(e)}}>
-                    <option>Choose Course</option>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Digital Marketing">Digital Marketing</option>
-                    <option value="Backend">Backend</option>
-                </Form.Select>
-
-                <Form.Select name = 'course_code' className = 'mb-3 register_form_label' onChange={(e)=>{handleChangeStudentDetails(e)}}>
-                    <option>Choose Course Code</option>
-                    <option value="FE">FE - Frontend</option>
-                    <option value="DM">DM - Digital Marketing</option>
-                    <option value="BE">BE - Backend</option>
-                </Form.Select>
-
-                
-                <Form.Select name = 'cohort' className = 'mb-3 register_form_label' onChange={(e)=>{handleChangeStudentDetails(e)}}>
-                    <option>Choose Cohort</option>
-                    <option value="2024-A">2024-A</option>
-                    <option value="2024-B">2024-B</option>
-                </Form.Select>
-
-                <Button className='register_form_btn' variant="primary" type="submit">
-                    Register
-                </Button>
-            </Form>
-            {/* </Col> */}
+            <img className='col-4 register_img' src={REGISTER} alt="" />
+            <RegisterForm 
+                coursesArray = {coursesArray}
+                userProfile =   {userProfile}
+                uid = {user.id}
+            />    
         </Row>
     </Container>
   );
 }
-
 
 export default Register;

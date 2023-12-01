@@ -11,6 +11,8 @@ import { IoIosAddCircleOutline } from 'react-icons/io'
 import { Tooltip } from 'react-tooltip';
 
 
+import styles from  './CourseView.module.css';
+
 import { addCourseName } from '../../../../store/courses/courses.actions';
 import { selectCourseName } from '../../../../store/courses/courses.selector';
 
@@ -19,7 +21,7 @@ import {firestore, storage} from '../../../../utils/firebase.utils';
 import { uploadString,  ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 
 import Navbar from '../../../../components/general/Navbar/Navbar';
-import Sidebar from '../../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../../components/admin/adminSideBar/AdminSidebar';
 import AddTopicModal from '../../../../components/admin/addTopicModal/AddTopicModal';
 import AddSubCourseModal from '../../../../components/admin/addSubCourseModal/AddSubCourseModal';
 import SubCoursesCard from '../../../../components/admin/subcourseCard/SubCoursesCard';
@@ -142,7 +144,7 @@ export default function CourseView() {
       <Navbar handleShow={handleShow}/>
       <Container fluid>
         <Row>
-         <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
+        <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
           {
             loading ?
             <Col>

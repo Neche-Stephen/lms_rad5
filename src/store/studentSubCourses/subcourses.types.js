@@ -1,0 +1,5 @@
+const SUBCOURSES_ACTION_TYPES = {
+  ADD_SUBCOURSE_NAME: 'courses/ADD_COURSE_NAME',
+  };
+  
+export default SUBCOURSES_ACTION_TYPES;

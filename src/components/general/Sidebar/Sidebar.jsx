@@ -10,7 +10,6 @@ import RAD5_LOGO from './images/rad5.png';
 // import { sidebarItems as defaultSidebarItems  } from '../../../utils/sidebarItems.utils';
 
 function Sidebar({SidebarItems, showOffcanvas, handleClose, currentItem}) {
-  console.log(SidebarItems, showOffcanvas, handleClose, currentItem)
   const navigate = useNavigate();
   const [sidebarItems, setSidebarItems] = useState(SidebarItems);
 

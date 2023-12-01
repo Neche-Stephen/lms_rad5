@@ -38,6 +38,7 @@ async function generateRegNumber(course, cohort) {
     return newRegNumber;
   }
 
+
 export const addStudentToCohort = async (studentDetails) =>{
     console.log(studentDetails);
     const {course,cohort } = studentDetails
@@ -54,4 +55,28 @@ export const addStudentToCohort = async (studentDetails) =>{
       console.error("Error adding document to subcollection: ", error);
     });
 
+}
+
+// async function updateStudentProfile(documentId) {
+//   const docRef = doc(firestore, 'yourCollectionName', documentId);
+
+//   try {
+//     await updateDoc(docRef, {
+//       active: true,
+//       // Add other new field values here as needed
+//       newField1: 'someValue',
+//       newField2: 123,
+//       // Add more fields as required
+//     });
+
+//     console.log('Document successfully updated!');
+//   } catch (error) {
+//     console.error('Error updating document: ', error);
+//   }
+// }
+
+export const registerStudent = async (studentDetails, uid) =>{
+  // const regNumber = generateRegNumber();
+  // addStudentToCohort(studentDetails, regNumber);
+  // updateStudentProfile();
 }

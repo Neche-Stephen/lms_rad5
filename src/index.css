@@ -2,3 +2,7 @@
   --primary-color: #3936BC;
   --secondary-color: #ff5733;
 }
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}

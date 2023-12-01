@@ -3,13 +3,14 @@ import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
-
+import { setDoc, doc } from 'firebase/firestore';
 
 import './CreateAccountStudent.css'
+
 import LOGO from '../../assets/images/rad5.png';
 import REGISTER from '../../assets/images/register.png';
 
-import { signUpWithEmailAndPassword } from '../../utils/firebase.utils';
+import { signUpWithEmailAndPassword, firestore } from '../../utils/firebase.utils';
 
 const defaultStudentDetails = {
     'first_name' : '',
@@ -37,26 +38,20 @@ function CreateAcountStudent() {
             console.log('calling');
             const userCredential = await signUpWithEmailAndPassword(email, password);
             const user = userCredential.user;
-            const uid = user.uid;
             // Handle success, e.g., navigate, update state, etc.
             console.log('User signed in:', user);
-            // navigate('/admin/analytics');
-            auth
-            .setCustomUserClaims(uid, { student: true })
-            .then(() => {
-                // The new custom claims will propagate to the user's ID token the
-                // next time a new one is issued.
-                console.log('custom claim given')
-            });
 
-            auth
-            .verifyIdToken(uid)
-            .then((claims) => {
-                if (claims.student === true) {
-                // Allow access to requested admin resource.
-                console.log('it is working')
-                }
-            });
+            await setDoc(doc(firestore, 'students', user.uid), {
+                first_name: first_name,
+                last_name: last_name,
+                active: false
+                // Add more fields as needed
+              });
+
+              console.log('User profile created successfully in Firestore');
+    
+            // navigate('/admin/analytics');
+       
           } catch (error) {
             // Handle error, e.g., show an error message, update state, etc.
             console.error('Sign-in error:', error);

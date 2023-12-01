@@ -26,7 +26,10 @@ import Cohort from './Routes/admin/Cohorts/cohort/cohort';
 
 //Students Routes
 import Dashboard from './Routes/student/Dashboard/Dashboard';
-import StudentCourse from './Routes/student/Courses/Courses';
+import StudentCourses from './Routes/student/Courses/Courses';
+import SelectedStudentCourse from './Routes/student/Courses/Course/Course';
+import SelectedStudentSubCourse from './Routes/student/Courses/Course/subcourse/Subcourse';
+import SelectedStudentSubCourseTopic from './Routes/student/Courses/Course/subcourse/SubcourseTopic/SubCourseTopic';
 
 
 
@@ -59,7 +62,11 @@ export default function App() {
 
             {/* Students Dashboard Route */}
             <Route path='/student/dashboard/' element = {<Dashboard />} /> 
-            <Route path='/student/courses/' element = {<StudentCourse />} />
+            <Route path='/student/courses/' element = {<StudentCourses />} />
+            <Route path='/student/courses/:courseName' element = {<SelectedStudentCourse />} />
+            <Route path='/student/courses/subcourse/:subCourseName' element = {<SelectedStudentSubCourse />} />
+            <Route path='/student/courses/subcourse/topic/:topicName' element = {<SelectedStudentSubCourseTopic />} />
+
 
 
 
