@@ -1,5 +1,5 @@
 
-import { collection, setDoc, getDocs, doc } from 'firebase/firestore';
+import { collection, setDoc, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { firestore } from '../firebase.utils';
 
 
@@ -57,26 +57,25 @@ export const addStudentToCohort = async (studentDetails) =>{
 
 }
 
-// async function updateStudentProfile(documentId) {
-//   const docRef = doc(firestore, 'yourCollectionName', documentId);
+async function updateStudentProfile(studentDetails, documentId) {
+  console.log('started')
+  const docRef = doc(firestore, 'students', documentId);
 
-//   try {
-//     await updateDoc(docRef, {
-//       active: true,
-//       // Add other new field values here as needed
-//       newField1: 'someValue',
-//       newField2: 123,
-//       // Add more fields as required
-//     });
+  try {
+    await updateDoc(docRef, {
+      active: true,
+      courses:[studentDetails]
+    });
 
-//     console.log('Document successfully updated!');
-//   } catch (error) {
-//     console.error('Error updating document: ', error);
-//   }
-// }
+    console.log('Document successfully updated!');
+  } catch (error) {
+    console.error('Error updating document: ', error);
+  }
+}
 
 export const registerStudent = async (studentDetails, uid) =>{
   // const regNumber = generateRegNumber();
   // addStudentToCohort(studentDetails, regNumber);
-  // updateStudentProfile();
+  updateStudentProfile(studentDetails, uid);
+  // console.log(uid);
 }
