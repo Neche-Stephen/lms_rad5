@@ -156,13 +156,8 @@ export default function CourseView() {
           </Col>
             :
             <Col>
-            <Row>
-              <Col>
-                  <p><FaArrowLeft /> Go back to Courses</p>
-              </Col>
-            </Row>
 
-            <Row >
+            <Row className='mb-3'>
               <Col>
                 <h3>Course Name: {courseName}</h3>
               </Col>
@@ -176,12 +171,12 @@ export default function CourseView() {
                     <h3>Subcourses</h3>
                   </Col>
                 </Row>
-                <Row  className='px-5 mt-2' style={{gap:'50px'}}>
+                <Row  className='px-5 mt-2 justify-content-center justify-content-sm-start' style={{gap:'50px'}}>
                 {
                 subCourses.length > 0 &&
                 subCourses.map((subCourse, index)=>{
                 return (
-                  <Col xs = '10' md = '4' lg = '3' key = {index}>
+                  <Col xs = '10' sm = '5' md = '4' lg = '3' key = {index}>
                     <SubCoursesCard 
                         subCourseData = {subCourse}
                     />
