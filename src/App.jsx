@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './store/store';
 
 import Login from './Routes/Login/Login';
-import Register from './Routes/register/Register';
+import Register from './Routes/studentRegister/Register';
 import CreateAccountStudent from './Routes/createAccountStudent/CreateAccountStudent';
 
 //change for dev

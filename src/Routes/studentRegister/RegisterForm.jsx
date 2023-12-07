@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, Button, } from 'react-bootstrap';
+import { Form, Button, Spinner } from 'react-bootstrap';
 
 
 import { registerStudent } from '../../utils/register/registerStudent';
@@ -10,16 +10,14 @@ const defaultStudentDetails = {
     'cohort':'',
 }
 
-// const Cohort = ()=>{
-//     return
-// }
-
-export default function RegisterForm ({coursesArray, userProfile, uid}) {
+export default function RegisterForm ({coursesArray, userProfile, uid, notify}) {
     console.log(userProfile);
     
     const [studentDetails, setStudentDetails] = useState(defaultStudentDetails);
     const {courseName, course_code, cohort} = studentDetails;
     const { first_name, last_name, email} = userProfile;
+
+    const [loadingSubmit, setLoadingSubmit] = useState(false); // Loading state for submit btn
 
     const handleChangeStudentDetails = (e)=>{
         const { name, value } = e.target;
@@ -28,9 +26,13 @@ export default function RegisterForm ({coursesArray, userProfile, uid}) {
         setStudentDetails({ ...studentDetails, [name]: value });
     }
 
-    const handleSubmitStudentDetails = (e)=>{
+    const handleSubmitStudentDetails = async (e)=>{
         e.preventDefault();
-        registerStudent(studentDetails, uid);
+        setLoadingSubmit(true);
+        await registerStudent(studentDetails, uid);
+        setStudentDetails(defaultStudentDetails);
+        notify();
+        setLoadingSubmit(false);
     }
   return (
     <Form className='register_form col-5' onSubmit={(e)=>handleSubmitStudentDetails(e)}>
@@ -104,7 +106,7 @@ export default function RegisterForm ({coursesArray, userProfile, uid}) {
     }
 
     <Button className='register_form_btn' variant="primary" type="submit">
-        Register
+       {loadingSubmit ? <Spinner animation="border" /> : 'Register'}
     </Button>
 </Form>
   )

@@ -24,7 +24,7 @@ import Navbar from '../../../../components/general/Navbar/Navbar';
 import AdminSidebar from '../../../../components/admin/adminSideBar/AdminSidebar';
 import AddTopicModal from '../../../../components/admin/addTopicModal/AddTopicModal';
 import AddSubCourseModal from '../../../../components/admin/addSubCourseModal/AddSubCourseModal';
-import SubCoursesCard from '../../../../components/admin/subcourseCard/SubCoursesCard';
+import SubCoursesCard from '../../../../components/admin/adminSubcourseCard/SubCoursesCard';
 import TopicsTable from '../../../../components/admin/topicsTable/TopicsTable';
 import Table from 'react-bootstrap/Table';
 
