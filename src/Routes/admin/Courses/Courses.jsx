@@ -70,7 +70,7 @@ export default function Courses() {
             </Col>
             :
             <Col lg = '10'>
-              <Row className='px-5 mt-5 justify-content-between' style={{gap:'30px'}}>
+              <Row className={`${styles.course_card_row} px-5 mt-5 justify-content-center justify-content-sm-start`}>
                   {
                     coursesData.length > 0 && coursesData.map((courseData, index) =>{
                       console.log(courseData)

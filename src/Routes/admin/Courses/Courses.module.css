@@ -16,3 +16,7 @@
         width: 90%;
     }
 }
+
+.course_card_row{
+    gap: 30px;
+}
