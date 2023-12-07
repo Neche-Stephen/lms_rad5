@@ -1,9 +1,8 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 import './CreateAccountStudent.css'
 
@@ -24,6 +23,8 @@ function CreateAcountStudent() {
     const [studentDetails, setStudentDetails] = useState(defaultStudentDetails);
     const {first_name, last_name, password, email} = studentDetails;
 
+    const navigate = useNavigate();
+    const [loadingSubmit, setLoadingSubmit] = useState(false);
     const handleChangeStudentDetails = (e)=>{
         const { name, value } = e.target;
         console.log(name, value);
@@ -33,7 +34,7 @@ function CreateAcountStudent() {
 
     const handleCreateAccount = async (e)=>{
         e.preventDefault();
-
+        setLoadingSubmit(true);
         try {
             console.log('calling');
             const userCredential = await signUpWithEmailAndPassword(email, password);
@@ -44,18 +45,20 @@ function CreateAcountStudent() {
             await setDoc(doc(firestore, 'students', user.uid), {
                 first_name: first_name,
                 last_name: last_name,
+                email: email,
                 active: false
                 // Add more fields as needed
               });
 
               console.log('User profile created successfully in Firestore');
-    
-            // navigate('/admin/analytics');
+              setLoadingSubmit(false);
+            navigate('/student/dashboard');
        
           } catch (error) {
             // Handle error, e.g., show an error message, update state, etc.
-            console.error('Sign-in error:', error);
+            console.error('Create Student Account error:', error);
             // You can switch on error.code if needed
+            setLoadingSubmit(false);
           }
     }
 
@@ -112,7 +115,7 @@ function CreateAcountStudent() {
                 </Form.Group>
 
                 <Button className='create_account_form_btn' variant="primary" type="submit">
-                    Submit
+                    { loadingSubmit ? <Spinner animation='border'/>: 'Submit'}
                 </Button>
             </Form>
             {/* </Col> */}

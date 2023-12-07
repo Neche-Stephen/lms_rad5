@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { Fragment, useState } from 'react';
 import { Container, Row, Col, Spinner, Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { collection, getDocs, onSnapshot, query, orderBy } from 'firebase/firestore';
-import {firestore, storage} from '../../../utils/firebase.utils';
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { firestore } from '../../../utils/firebase.utils';
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { Tooltip } from 'react-tooltip';
 
 
-import { addCourse } from '../../../store/courses/courses.actions';
+import styles from './Courses.module.css';
+
 import Navbar from '../../../components/general/Navbar/Navbar';
 import AdminSidebar from '../../../components/admin/adminSideBar/AdminSidebar';
-import CoursesCard from '../../../components/admin/courseCard/CoursesCard';
+import CoursesCard from '../../../components/admin/adminCourseCard/CoursesCard';
 import AddCourseModal from '../../../components/admin/addCourseModal/AddCourseModal';
 
 
@@ -55,8 +55,6 @@ export default function Courses() {
         <Container fluid>
           <Row>
             <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
-            {/* <Sidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/> */}
-
            
            {
             loadingCourses
@@ -71,19 +69,19 @@ export default function Courses() {
               </div>
             </Col>
             :
-            <Col xs = '10'>
-              <Row className='px-5 mt-5' style={{gap:'50px'}}>
+            <Col lg = '10'>
+              <Row className='px-5 mt-5 justify-content-between' style={{gap:'30px'}}>
                   {
                     coursesData.length > 0 && coursesData.map((courseData, index) =>{
                       console.log(courseData)
-                      return <Col xs = '10' md = '4' lg = '3' key = {index}  className = 'course_card p-3'>
+                      return <div key = {index}  className = {`${styles.courses_card} p-3`}>
                           <CoursesCard courseData = {courseData} />
-                        </Col>
+                        </div>
                       
                     })
                   }
 
-                <Col xs = '10' md = '4' lg = '3' className = 'course_card'>
+                <div className = {`${styles.courses_card}`}>
                     <div className='row justify-content-center align-items-center course_card_add p-0' >
                       <p className='col-auto' onClick={handleShowModal}>
                         <IoIosAddCircleOutline 
@@ -98,7 +96,7 @@ export default function Courses() {
                           handleCloseModal = {handleCloseModal}
                         />
                     </Modal>
-                </Col>
+                </div>
               </Row>
           </Col>
            }

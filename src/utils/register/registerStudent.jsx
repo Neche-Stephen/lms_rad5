@@ -1,5 +1,5 @@
 
-import { collection, setDoc, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { collection, setDoc, getDocs, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { firestore } from '../firebase.utils';
 
 
@@ -64,7 +64,7 @@ async function updateStudentProfile(studentDetails, documentId) {
   try {
     await updateDoc(docRef, {
       active: true,
-      courses:[studentDetails]
+      courses: arrayUnion(studentDetails)
     });
 
     console.log('Document successfully updated!');
@@ -76,6 +76,6 @@ async function updateStudentProfile(studentDetails, documentId) {
 export const registerStudent = async (studentDetails, uid) =>{
   // const regNumber = generateRegNumber();
   // addStudentToCohort(studentDetails, regNumber);
-  updateStudentProfile(studentDetails, uid);
+  await updateStudentProfile(studentDetails, uid);
   // console.log(uid);
 }

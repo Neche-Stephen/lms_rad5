@@ -45,8 +45,6 @@ export default function Courses() {
         // Return the unsubscribe function to detach the listener when needed
         return unsubscribe;
       };
-      
-
 
     const CheckIfStudentIsActive = (studentDetails)=>{
         const isActive = studentDetails.active;
@@ -68,7 +66,7 @@ export default function Courses() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
           if (user) {
-            console.log(user)
+            // console.log(user)
             setUser(user);
             fetchStudentDetails(user.uid); // Call fetchCourses with the user UID
           } else {
@@ -102,10 +100,9 @@ export default function Courses() {
                           <Card.Img variant="top" src={LOGO} />
                           <Card.Body>
                               <Card.Title>{course.courseName}</Card.Title>
-                              {/* <Card.Text>
-                              Some quick example text to build on the card title and make up the
-                              bulk of the card's content.
-                              </Card.Text> */}
+                              <Card.Text>
+                                Cohort: {course.cohort}
+                              </Card.Text>
                             
                               <Link to={`/student/courses/${course.courseName}`} state={course}>
                                     <Button variant="primary">Go to Course</Button>

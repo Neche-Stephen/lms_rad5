@@ -4,6 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { collection, getDocs, getDoc, deleteDoc, doc, setDoc} from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './Register.css'
 
@@ -14,6 +16,7 @@ import REGISTER from '../../assets/images/register.png';
 import RegisterForm from './RegisterForm';
 
 function Register() {
+    const notify = () => toast("Registration Complete, You can close this tab now"); // Notification for successful registration
     // State to store user id, if user is authenicated
     const [user, setUser] = useState(null);
     const [uid, setUid] = useState('')
@@ -95,7 +98,9 @@ function Register() {
                 coursesArray = {coursesArray}
                 userProfile =   {userProfile}
                 uid = {uid}
+                notify = {notify}
             />    
+            <ToastContainer />
         </Row>
     </Container>
   );

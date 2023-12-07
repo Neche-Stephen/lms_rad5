@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Spinner } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 
 import { signInAuthUserWithEmailAndPassword } from '../../../utils/firebase.utils';
@@ -9,20 +9,25 @@ export default function StudentLogin() {
     const navigate = useNavigate();
     const [studentEmail, setStudentEmail] = useState('');
     const [studentPassword, setStudentPassword] = useState('');
+    const [loadingSubmit, setLoadingSubmit] = useState(false);
 
     const handleStudentSubmit = async (e) => {
         e.preventDefault();
+        setLoadingSubmit(true);
         try {
           console.log('calling');
           const userCredential = await signInAuthUserWithEmailAndPassword(studentEmail, studentPassword);
           const user = userCredential.user;
           // Handle success, e.g., navigate, update state, etc.
           console.log('User signed in:', user);
+          setLoadingSubmit(false);
           navigate('/student/Dashboard');
         } catch (error) {
           // Handle error, e.g., show an error message, update state, etc.
           console.error('Sign-in error:', error.code);
           // You can switch on error.code if needed
+          setLoadingSubmit(false);
+
         }
       };
 
@@ -47,7 +52,9 @@ export default function StudentLogin() {
             </Row>  
             <Row className='justify-content-center mb-4'>
                 <Col xs = 'auto'>
-                    <Button type='submit' className='login_button py-1'>LOGIN</Button>
+                    <Button type='submit' className='login_button py-1'>
+                      {loadingSubmit ? <Spinner animation='border'/> :'LOGIN'}
+                      </Button>
                 </Col>
             </Row>
            
