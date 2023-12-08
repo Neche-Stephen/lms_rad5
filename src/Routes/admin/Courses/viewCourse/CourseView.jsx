@@ -36,9 +36,11 @@ const coursesCollection = collection(firestore, 'courses');
 export default function CourseView() {
   const [loading, setLoading] = useState(true);
 
+  // Sidebar offcanvas
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const handleShow = () => setShowOffcanvas(true);
   const handleClose = () => setShowOffcanvas(false);
+
   //Spinner or loader for fetching the course details
   const [loadingCourseDetails, setLoadingCourseDetails] = useState(true);
 
@@ -211,18 +213,18 @@ export default function CourseView() {
           {/* Topics */}
             <Row>
               <Col>
-                <Row>
+                <Row className='mt-3'>
                   <Col>
                     <h3>Topics</h3>
                   </Col>
                 </Row>
-                <Row  className='px-5 mt-2' style={{gap:'50px'}}>
-                   <Col xs = '12' sm = '10' lg='6'>
+                <Row  className='px-5 mt-2 justify-content-center justify-content-lg-start'>
+                   <Col xs = '12' sm = '10' lg='8'>
                       <TopicsTable coursetopics = {coursetopics}/>
                    </Col>
 
                    
-                <Col xs = '10'  md = '4' lg = '3' className = 'course_card'>
+                <Col xs = '10'  md = '4' lg = '3' className = 'course_card mt-4 mt-lg-0'>
                     <div className='row justify-content-center align-items-center course_card_add p-0' >
                       <p className='col-auto' onClick={handleShowModalTopic}>
                         <IoIosAddCircleOutline 

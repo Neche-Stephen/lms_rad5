@@ -7,11 +7,17 @@ import { ref, getDownloadURL, getMetadata } from 'firebase/storage';
 
 import {firestore, storage} from '../../../../utils/firebase.utils';
 import Navbar from '../../../../components/general/Navbar/Navbar';
-import Sidebar from '../../../../components/general/Sidebar/Sidebar';
+import AdminSidebar from '../../../../components/admin/adminSideBar/AdminSidebar';
+
 
 import { selectCourseName } from '../../../../store/courses/courses.selector';
 
 export default function ViewSubCourseTopic() {
+    // Sidebar offcanvas
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
+    const handleShow = () => setShowOffcanvas(true);
+    const handleClose = () => setShowOffcanvas(false);
+
     const courseName = useSelector(selectCourseName);
     const {topicName} = useParams();
 
@@ -64,11 +70,11 @@ export default function ViewSubCourseTopic() {
             }
             return null;
             });
-    
+
         // Wait for all promises to resolve
         const fetchedFiles = await Promise.all(filePromises);
         setTopicFiles(fetchedFiles.filter((file) => file !== null));
-          
+            
     }
     getDocumentData();
     getTopicFiles();
@@ -76,10 +82,10 @@ export default function ViewSubCourseTopic() {
     }, [])
   return (
     <>
-        <Navbar />
+        <Navbar handleShow={handleShow}/>
         <Container fluid>
             <Row>
-                <Sidebar />
+                <AdminSidebar  showOffcanvas = {showOffcanvas} handleClose = {handleClose} currentItem='Courses'/>
                 <Col>
                     <Row>
                         <Col>
@@ -93,18 +99,18 @@ export default function ViewSubCourseTopic() {
                         </Col>
                     </Row>
                     <Row className='justify-content-center'>
-                       {
+                        {
                             topicData.topicMaterialLink 
                             ? 
                             <a href={topicData.topicMaterialLink} target = '_blank'>Topic Material</a>
                             :
                             topicFiles.map((topicFile, index) => {
                                     if (topicFile.path.includes('topicMaterial')) {
-                                   return(
-                                     <div>
+                                    return(
+                                        <div>
                                         <a href={topicFile.url} target = '_blank'>Topic Material</a>
                                     </div>
-                                   )
+                                    )
                                     }
                                     return null;
                                 })
@@ -119,11 +125,11 @@ export default function ViewSubCourseTopic() {
                             :
                             topicFiles.map((topicFile, index) => {
                                     if (topicFile.path.includes('topicClasswork')) {
-                                   return(
-                                     <div>
+                                    return(
+                                        <div>
                                         <a href={topicFile.url} target = '_blank'>Topic Classwork</a>
                                     </div>
-                                   )
+                                    )
                                     }
                                     return null;
                                 })
@@ -132,7 +138,7 @@ export default function ViewSubCourseTopic() {
                         
                     </Row>
                     <Row>
-                      <Col xs = ''>
+                        <Col xs = ''>
                         {
                             topicData.topicHomeworkLink 
                             ? 
@@ -140,11 +146,11 @@ export default function ViewSubCourseTopic() {
                             :
                             topicFiles.map((topicFile, index) => {
                                     if (topicFile.path.includes('topicHomework')) {
-                                   return(
-                                     <div>
+                                    return(
+                                        <div>
                                         <a href={topicFile.url} target = '_blank'>Topic Homework</a>
                                     </div>
-                                   )
+                                    )
                                     }
                                     return null;
                                 })

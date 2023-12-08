@@ -6,7 +6,7 @@ import { FaEdit } from 'react-icons/fa';
 import { BiShow } from 'react-icons/bi';
 import { AiFillDelete} from 'react-icons/ai';
 import { Tooltip } from 'react-tooltip';
-import { Table} from 'react-bootstrap';
+import { Table, Accordion} from 'react-bootstrap';
 
 import { selectCourseName } from '../../../store/courses/courses.selector';
 import {firestore, storage} from '../../../utils/firebase.utils';
@@ -22,7 +22,7 @@ export default function TopicsTable({ coursetopics }) {
   const courseName = useSelector(selectCourseName)
   return (
     <Fragment>
-
+{/* 
     <Table responsive="sm">
       <thead>
         <tr>
@@ -61,19 +61,52 @@ export default function TopicsTable({ coursetopics }) {
                       >
                         <AiFillDelete />
                       </button>
-                      </div>
+                    </div>
                   </td>
                 </tr>
               )
             })
           }
-      
-          {/* <tr>
-            <td>Add New Topic</td>
-            <td></td>
-          </tr> */}
       </tbody>
-    </Table>
+    </Table> */}
+
+    <Accordion className=''>
+    
+    {
+      coursetopics.length > 0 && 
+      coursetopics.map((topic, index)=>{
+        return (
+            <Accordion.Item eventKey={index}>
+              <Accordion.Header>{topic.topicName}</Accordion.Header>
+              <Accordion.Body>
+              <div className = 'row justify-content-around mt-5 mb-5'>
+                      <Link
+                        to ={`/admin/courses/view_topic/${topic.topicName}`}
+                        className='btn btn-primary w-25'
+                        data-tooltip-id="course_card_tip" 
+                        data-tooltip-content="View Course"
+                        >
+                      <Tooltip id="course_card_tip" />
+                      <BiShow /> 
+                      </Link>
+                      <button type='button' className='btn btn-secondary w-25'
+                      data-tooltip-id="course_card_tip" 
+                      data-tooltip-content="Edit Course">
+                        <FaEdit /> 
+                      </button>
+                      <button type='button' className='btn btn-danger w-25' onClick={()=> removeTopic(courseName, topic.topicName)}
+                      data-tooltip-id="course_card_tip" 
+                      data-tooltip-content="Delete Course"
+                      >
+                        <AiFillDelete />
+                      </button>
+                </div>
+              </Accordion.Body>
+          </Accordion.Item>
+        )
+      })
+    }
+    </Accordion>
     </Fragment>
        
   )

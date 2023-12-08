@@ -148,12 +148,6 @@ export default function SubCourseView() {
           </Col>
       </Row>
      
-       {/* <><br/><button onClick={handleShowModalTopic}>Add New Topic</button></>
-       <Modal show={showModalTopic} onHide={handleCloseModalTopic}>
-        <AddSubCourseTopicModal
-        handleCloseModalTopic = {handleCloseModalTopic}  
-        />
-      </Modal> */}
             </Col>
         </Row>
     </Container>
