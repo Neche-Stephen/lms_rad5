@@ -107,6 +107,7 @@ export default function TopicsTable({ coursetopics }) {
       })
     }
     </Accordion>
+    
     </Fragment>
        
   )
