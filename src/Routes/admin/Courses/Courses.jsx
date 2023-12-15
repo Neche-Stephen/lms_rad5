@@ -45,7 +45,6 @@ export default function Courses() {
       setLoadingCourses(false);
     });
     
-
     // Return a cleanup function to unsubscribe from the listener when the component unmounts
     return () => unsubscribe();
   }, []);

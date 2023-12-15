@@ -38,6 +38,12 @@ hr{
     padding: 30px 80px;
 }
 
+@media(max-width:991px){
+    .register_form{
+        padding: 30px 30px;
+    }
+}
+
 .register_form_label{
     color: #000;
     font-family: Montserrat;

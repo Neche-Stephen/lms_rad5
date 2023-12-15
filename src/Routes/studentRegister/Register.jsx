@@ -93,7 +93,7 @@ function Register() {
             </Col>
         </Row>
         <Row className='mt-2 mb-5 justify-content-center align-items-stretch' style={{gap:"30px"}}>
-            <img className='col-4 register_img' src={REGISTER} alt="" />
+            <img className='col-md-4 register_img' src={REGISTER} alt="" />
             <RegisterForm 
                 coursesArray = {coursesArray}
                 userProfile =   {userProfile}

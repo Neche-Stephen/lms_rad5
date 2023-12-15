@@ -35,7 +35,7 @@ export default function RegisterForm ({coursesArray, userProfile, uid, notify}) 
         setLoadingSubmit(false);
     }
   return (
-    <Form className='register_form col-5' onSubmit={(e)=>handleSubmitStudentDetails(e)}>
+    <Form className='register_form col-md-5 col-11' onSubmit={(e)=>handleSubmitStudentDetails(e)}>
     <Form.Group className="mb-3" controlId="first_name">
         <Form.Label className='register_form_label'>First Name</Form.Label>
         <Form.Control type="text" placeholder="Enter First Name" name = 'first_name' value = {first_name} disabled onChange = {(e)=>{

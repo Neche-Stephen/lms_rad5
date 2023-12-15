@@ -21,7 +21,7 @@ export default function StudentLogin() {
           // Handle success, e.g., navigate, update state, etc.
           console.log('User signed in:', user);
           setLoadingSubmit(false);
-          navigate('/student/Dashboard');
+          navigate('/student/courses');
         } catch (error) {
           // Handle error, e.g., show an error message, update state, etc.
           console.error('Sign-in error:', error.code);

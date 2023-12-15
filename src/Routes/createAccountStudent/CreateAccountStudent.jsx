@@ -80,11 +80,8 @@ function CreateAcountStudent() {
             </Col>
         </Row>
         <Row className='mt-2 mb-5 justify-content-center align-items-stretch' style={{gap:"30px"}}>
-            {/* <Col xs = '4'> */}
-                <img className='col-4 create_account_img' src={REGISTER} alt="" />
-            {/* </Col> */}
-            {/* <Col xs = '5'> */}
-            <Form className='create_account_form col-5' onSubmit={(e)=>handleCreateAccount(e)}>
+            <img className='col-md-4 create_account_img' src={REGISTER} alt="" />
+            <Form className='create_account_form col-md-5 col-11' onSubmit={(e)=>handleCreateAccount(e)}>
                 <Form.Group className="mb-3" controlId="first_name">
                         <Form.Label className='register_form_label'>First Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter First Name" name = 'first_name' value = {first_name} onChange = {(e)=>{

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap';
-import { doc, setDoc, arrayUnion } from 'firebase/firestore';
+import { doc, setDoc, arrayUnion, getDoc, updateDoc } from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { firestore } from '../../../utils/firebase.utils';
 
@@ -14,6 +16,11 @@ const defaultCohortDetails = {
 }
 
 export default function AddCohortModal({ handleCloseAddCohortModal }) {
+
+    const existingChortGroupNotify = () => toast(`
+        There is an existing group of ${courseName} cohorts, simply add a new cohort to the group
+    `);
+
     const [cohortDetails, setCohortDetails] = useState(defaultCohortDetails);
     const {courseName, courseCode, cohortName, startDate, endDate} = cohortDetails
 
@@ -22,48 +29,39 @@ export default function AddCohortModal({ handleCloseAddCohortModal }) {
         setCohortDetails({...cohortDetails, [name]: value});
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(cohortDetails);
         const cohortRef = doc(firestore, 'cohorts', `${courseName} Cohort`);
-
+      
         try {
+          const cohortSnapshot = await getDoc(cohortRef);
+      
+          if (cohortSnapshot.exists()) {
+            existingChortGroupNotify();
+            console.log('Notification');
+          } else {
+            // Document doesn't exist, create a new document with the provided fields
             await setDoc(cohortRef, {
-               courseName, courseCode, 
-               cohorts: arrayUnion({
-
-               })
-
-               
-              }, { merge: true });
-              console.log('Document added/updated successfully');
+              courseName,
+              courseCode,
+              cohorts: [{ cohort:cohortName, startDate, endDate }],
+              created_at : new Date()
+            });
+            console.log('Document created successfully reaaly');
+          }
         } catch (error) {
-            console.error('Error updating document fields:', error);
+          console.error('Error updating/creating document:', error);
+          // Handle error if update/creation fails
         }
-
-        // try {
-        //     const docSnapshot = await getDoc(documentRef);
-        
-        //     if (docSnapshot.exists()) {
-        //       // Document exists, update fields
-        //       await updateDoc(documentRef, fieldsToUpdate);
-        //       console.log('Document fields updated successfully');
-        //     } else {
-        //       // Document doesn't exist, create a new document with the provided fields
-        //       await setDoc(documentRef, fieldsToUpdate);
-        //       console.log('Document created successfully');
-        //     }
-        //   } catch (error) {
-        //     console.error('Error updating/creating document:', error);
-        //     // Handle error if update/creation fails
-        //   }
-    
-    }
+      };
+      
 
   
 
   return (
     <Form onSubmit={handleSubmit}>
+            <ToastContainer />
          <Modal.Header closeButton>
           <Modal.Title>Create Cohort</Modal.Title>
         </Modal.Header>

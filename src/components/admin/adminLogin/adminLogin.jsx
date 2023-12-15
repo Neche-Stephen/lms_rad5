@@ -19,7 +19,7 @@ export default function AdminLogin() {
           const user = userCredential.user;
           // Handle success, e.g., navigate, update state, etc.
           console.log('User signed in:', user);
-          navigate('/admin/analytics');
+          navigate('/admin/courses');
         } catch (error) {
           // Handle error, e.g., show an error message, update state, etc.
           console.error('Sign-in error:', error.code);

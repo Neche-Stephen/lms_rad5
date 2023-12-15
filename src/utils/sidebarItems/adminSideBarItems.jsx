@@ -1,11 +1,11 @@
 export const adminSidebarItems = [
-    {
-      name : 'Analytics',
-      link : '/admin/analytics',
-      clicked : false,
-      disabled : false,
-      haschildren : false,
-    },
+    // {
+    //   name : 'Analytics',
+    //   link : '/admin/analytics',
+    //   clicked : false,
+    //   disabled : false,
+    //   haschildren : false,
+    // },
     {
       name : 'Courses',
       link : '/admin/courses',
@@ -13,63 +13,63 @@ export const adminSidebarItems = [
       disabled : false,
       hasChildren : false,
     },
-    {
-      name : 'Students',
-      link : '/admin/students',
-      clicked : false,
-      disabled : false
-    },
+    // {
+    //   name : 'Students',
+    //   link : '/admin/students',
+    //   clicked : false,
+    //   disabled : false
+    // },
     {
       name : 'Cohorts',
       link : '/admin/cohorts',
       clicked : false,
       disabled : false
     },
-    {
-      name : 'Tutors',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Forums',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Certification',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Mail',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Notification',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Approvals',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Reports',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Settings',
-      clicked : false,
-      disabled : false
-    },
-    {
-      name : 'Sign Out',
-      clicked : false,
-      disabled : false
-    },
+    // {
+    //   name : 'Tutors',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Forums',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Certification',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Mail',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Notification',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Approvals',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Reports',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Settings',
+    //   clicked : false,
+    //   disabled : false
+    // },
+    // {
+    //   name : 'Sign Out',
+    //   clicked : false,
+    //   disabled : false
+    // },
   
   
   ]
