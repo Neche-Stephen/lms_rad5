@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@700&display=swap');
+
+.header{
+    letter-spacing:  1px;
+}
+
+.ourTutorscard{
+    border: #2f5bab solid 1px;
+    background-color: rgba(245, 245, 245, 0.4); 
+}
+
+.cardimg{
+    width: 50%;
+    height: 175px;
+    border: rgb(238, 128, 128) solid 1px;
+    border-radius: 100px;
+}
+
+.ourTutorsname{
+    color: #2f5bab;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+}
+
+.ourTutorscourse{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.cardicon{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}

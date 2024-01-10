@@ -1,0 +1,30 @@
+[
+    {
+        "img":"https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8fDB8fHww",
+        "name":"John Oga",
+        "course":"UI/UX designer that builds with figma & canva"
+    },
+    {
+        "img":"https://media.istockphoto.com/id/956373524/photo/joyful-bearded-man-smiling-to-you.jpg?s=612x612&w=0&k=20&c=TpKjIwu3LCT-O-eG-EOXI71nNlY4DWSTHLX4UAoRQGE=",
+        "name":"Emeka Ade",
+        "course":"Digital marketing educator"
+    },
+    {
+        "img":"https://media.istockphoto.com/id/1465326283/photo/cheerful-lady-wearing-headphones-using-tablet-and-laptop-in-office.jpg?s=612x612&w=0&k=20&c=ajQTb-DuGP91dTqMaQ-czSMoNuAcjnc_25dkHe8PIX4=",
+        "name":"Neche Emeh",
+        "course":"Teaches how to manage community(Community Management)"
+    },
+    {
+        "img":"https://media.istockphoto.com/id/1485546774/photo/bald-man-smiling-at-camera-standing-with-arms-crossed.jpg?s=612x612&w=0&k=20&c=9vuq6HxeSZfhZ7Jit_2HPVLyoajffb7h_SbWssh_bME=",
+        "name":"John Nna",
+        "course":"UI/UX designer that builds with figma & canva"
+    },{
+        "img":"https://media.istockphoto.com/id/1417635888/photo/cheerful-mid-adult-woman-face-mature-model-looking-at-camera-and-smiling.webp?b=1&s=170667a&w=0&k=20&c=QNYoqHoInSF9q_1N8zJV_syM-KeglG8de06A1IFD6bw=",
+        "name":"Angel Merry",
+        "course":"Web development (backend) that store client data"
+    },{
+        "img":"https://media.istockphoto.com/id/1476195033/photo/happy-young-man-smiling-and-looking-away-in-yellow-studio.webp?b=1&s=170667a&w=0&k=20&c=3jlXKJa_UHmV5Nh671f4rp7_OunVyQ3Jx2dUfIHUV3I=",
+        "name":"John Nna",
+        "course":"Web development (Frontend) that create's websites "
+    }
+]
