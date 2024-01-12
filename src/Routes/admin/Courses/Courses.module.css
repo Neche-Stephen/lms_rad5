@@ -1,22 +1,21 @@
-.courses_card{
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Montserrat', sans-serif;
-    height: 250px;
+.course_card_row{
+    gap: 30px;
+    /* flex-wrap: wrap; */
+}
+
+.course_card_col{
+    /* height: 250px; */
     width: 30%;
 }
 
 @media (max-width:767px){
-    .courses_card{
+    .course_card_col{
         width: 40%;
     }
 }
 
 @media (max-width:575px){
-    .courses_card{
+    .course_card_col{
         width: 90%;
     }
-}
-
-.course_card_row{
-    gap: 30px;
 }

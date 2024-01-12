@@ -5,9 +5,10 @@ import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { firestore } from '../../../utils/firebase.utils';
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { Tooltip } from 'react-tooltip';
-
+import { FaEdit } from 'react-icons/fa';
 
 import styles from './Courses.module.css';
+
 
 import Navbar from '../../../components/general/Navbar/Navbar';
 import AdminSidebar from '../../../components/admin/adminSideBar/AdminSidebar';
@@ -73,13 +74,18 @@ export default function Courses() {
                   {
                     coursesData.length > 0 && coursesData.map((courseData, index) =>{
                       console.log(courseData)
-                      return <div key = {index}  className = {`${styles.courses_card} p-3`}>
-                          <CoursesCard courseData = {courseData} />
-                        </div>
-                      
+                      return (
+                      // <div key = {index}  className = {`${styles.courses_card} p-3`}>
+                      //     <CoursesCard courseData = {courseData} />
+                      // </div>
+                        
+                    <div className={`${styles.course_card_col}`}>
+                      <CoursesCard courseData = {courseData} />
+                    </div>
+                      )
                     })
                   }
-
+{/* 
                 <div className = {`${styles.courses_card}`}>
                     <div className='row justify-content-center align-items-center course_card_add p-0' >
                       <p className='col-auto' onClick={handleShowModal}>
@@ -95,7 +101,8 @@ export default function Courses() {
                           handleCloseModal = {handleCloseModal}
                         />
                     </Modal>
-                </div>
+                </div> */}
+
               </Row>
           </Col>
            }

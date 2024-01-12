@@ -1,0 +1,49 @@
+
+.test_card{
+    padding: 57.829px 6.261px 6.261px 6.261px;;
+    border-radius: 9.392px;
+    background: #E1E2F6;
+}
+.test_card_first_row{
+    width: 100%;
+    margin: 0;
+
+}
+.test_card_white_circle{
+    position: relative;
+}
+
+.test_card_white_circle_inner{
+    position: absolute;
+    top: 9px;
+    left: 19px;
+}
+
+.test_card_second_row{
+    width: 100%;
+    padding: 9.392px 18.783px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 7.826px;
+    border-radius: 8.609px;
+    background: #FCF9FF;
+    margin: 0;
+}
+
+.test_card_second_row_col{
+    width: 30%;
+}
+
+@media(max-width:1100px){
+    .test_card_second_row{
+        /* gap: ; */
+    }
+    .test_card_second_row_col{
+        width: 30%;
+    }
+}
+
+button.test_card_second_row_col{
+    border: unset;
+    background-color: unset;
+}
