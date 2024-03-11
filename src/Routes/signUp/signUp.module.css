@@ -1,98 +1,108 @@
+/* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-.signInImg{
-    background-image: url(../../assets/images/signInImg.png);
-    background-size: cover;
-    height: 75vh;
+/* Styling for the sign-in image */
+.signInImg {
+    background-image: url(../../assets/images/signInImg.png); /* Background image path */
+    background-size: cover; /* Ensure the background image covers the entire element */
+    height: 75vh; /* Set the height of the element */
 }
 
-article h2{
-    font-family: "Lato", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-    line-height: 48px;
-    text-align: left;
+/* Styling for heading inside article */
+article h2 {
+    font-family: "Lato", sans-serif; /* Set font family */
+    font-weight: 800; /* Set font weight */
+    font-style: normal; /* Set font style */
+    line-height: 48px; /* Set line height */
+    text-align: left; /* Align text to the left */
 }
 
-article p{
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: left;
+/* Styling for paragraph inside article */
+article p {
+    font-family: "Lato", sans-serif; /* Set font family */
+    font-weight: 400; /* Set font weight */
+    font-style: normal; /* Set font style */
+    text-align: left; /* Align text to the left */
 }
 
-.myforminputs{
-    background-color: #F7F7F7;
+/* Styling for form inputs container */
+.myforminputs {
+    background-color: #F7F7F7; /* Set background color */
 }
 
-.myforminputs section{
-    padding: 40px 30px;   
+/* Styling for section inside form inputs container */
+.myforminputs section {
+    padding: 40px 30px; /* Set padding */
 }
 
-.myforminputs .inputs{
-    font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
-    font-size: small;
-    font-weight: 300;
-    border: 0px;
-    border-radius: 0px;
-    padding: 15px 0px;
-    margin-top: 25px;
-    color: #827B7B;
-    background-color: #F7F7F7;
-    border-bottom: #827B7BD1 1px solid;
+/* Styling for form inputs */
+.myforminputs .inputs {
+    font-family: "Nunito", sans-serif; /* Set font family */
+    font-size: small; /* Set font size */
+    font-weight: 300; /* Set font weight */
+    border: 0px; /* Set border */
+    border-radius: 0px; /* Set border radius */
+    padding: 15px 0px; /* Set padding */
+    margin-top: 25px; /* Set top margin */
+    color: #827B7B; /* Set text color */
+    background-color: #F7F7F7; /* Set background color */
+    border-bottom: #827B7BD1 1px solid; /* Set bottom border */
 }
 
-.NextBtn{
-    background-color: #D03135;
-    border: none;
-    padding: 8px;
-    border-radius: 8px;
-    margin-top: 50px;
-    width: 100%;
-    font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
+/* Styling for next button */
+.NextBtn {
+    background-color: #D03135; /* Set background color */
+    border: none; /* Remove border */
+    padding: 8px; /* Set padding */
+    border-radius: 8px; /* Set border radius */
+    margin-top: 50px; /* Set top margin */
+    width: 100%; /* Set width to 100% */
+    font-family: "Nunito", sans-serif; /* Set font family */
+    font-weight: 800; /* Set font weight */
 }
 
-.alreadyHaveACC{
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #827B7B;
+/* Styling for 'already have an account' text */
+.alreadyHaveACC {
+    font-family: "Lato", sans-serif; /* Set font family */
+    font-weight: 400; /* Set font weight */
+    font-style: normal; /* Set font style */
+    color: #827B7B; /* Set text color */
 }
 
-.alreadyHaveACC  a{
-    font-family: "Lato", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    color: #D03135;
-    text-decoration: none;
+/* Styling for link inside 'already have an account' text */
+.alreadyHaveACC a {
+    font-family: "Lato", sans-serif; /* Set font family */
+    font-weight: 500; /* Set font weight */
+    font-style: normal; /* Set font style */
+    color: #D03135; /* Set text color */
+    text-decoration: none; /* Remove underline */
 }
 
-.GoogleBtn{
-    border: none;
-    background-color: #827B7B40;
-    width: 100%;
-    padding: 8px;
-    font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    color: #474342;
+/* Styling for Google button */
+.GoogleBtn {
+    border: none; /* Remove border */
+    background-color: #827B7B40; /* Set background color */
+    width: 100%; /* Set width to 100% */
+    padding: 8px; /* Set padding */
+    font-family: "Nunito", sans-serif; /* Set font family */
+    font-weight: 700; /* Set font weight */
+    color: #474342; /* Set text color */
 }
 
+/* Media query for screens larger than 1000px */
 @media screen and (min-width: 1000px) {
-    .signInImg{
-        background-image: url(../assets/signInImg.png);
-        background-size: cover;
-        height: auto;
+    /* Adjustments for sign-in image */
+    .signInImg {
+        background-image: url(../assets/signInImg.png); /* Update background image path */
+        background-size: cover; /* Ensure the background image covers the entire element */
+        height: auto; /* Set height to auto */
     }
 
-    .myforminputs section{
-        margin-left: 65px;
-        margin-right: 20px;
-        padding: 60px 0;   
+    /* Adjustments for section inside form inputs container */
+    .myforminputs section {
+        margin-left: 65px; /* Set left margin */
+        margin-right: 20px; /* Set right margin */
+        padding: 60px 0; /* Set padding */
     }
-    
-  }
+}
