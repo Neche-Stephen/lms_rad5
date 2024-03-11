@@ -1,0 +1,121 @@
+/* Importing Nunito font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* Styling for background color */
+.loginbgColor{
+    background-color: #F7F7F7;
+}
+
+/* Styling for login inputs */
+.loginInputs{
+    background-color: #3058A840;
+    padding: 60px 40px;
+}
+
+/* Styling for heading */
+.loginInputs section article h2{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 41px;
+}
+
+/* Styling for paragraph */
+.loginInputs section article p{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Styling for input fields */
+.loginInputs .inputs{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+    font-weight: 300;
+    border: 0px;
+    border-radius: 0px;
+    padding: 15px 0px;
+    margin-top: 25px;
+    color: #827B7B;
+    background-color: #3058a800;
+    border-bottom: #827B7BD1 1px solid;
+    box-shadow: 0px 0px 5px #827B7B;
+}
+
+/* Styling for checkbox and forgot password link */
+.loginInputs .Check{
+    margin-top: 25px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 15px;
+}
+
+/* Styling for radio button */
+.loginInputs .Check .radioCheck{
+    font-weight: 200;
+    color: #524e4e;
+}
+
+/* Styling for forgot password link */
+.Check a{
+    font-weight: 400;
+    color: #D03135;
+    text-decoration: none;
+}
+
+/* Styling for login button */
+.loginInputs .LoginBtn{
+    background-color: #D03135;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 50px;
+    width: 100%;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+}
+
+/* Styling for 'already have an account' text */
+.alreadyHaveACC{
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: small;
+    font-style: normal;
+    color: #827B7B;
+}
+
+/* Styling for 'Sign Up' link */
+.alreadyHaveACC  a{
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #D03135;
+    text-decoration: none;
+}
+
+/* Styling for Google login button */
+.GoogleBtn{
+    border: none;
+    background-color: #f0f0f0f0;
+    width: 100%;
+    padding: 8px;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    color: #4d251b;
+}
+
+/* Media query for large screens */
+@media screen and (min-width: 1000px) {
+    /* Styling for login image on large screens */
+    .loginbgColor .LoginImg img{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 80vh;
+    }
+}
